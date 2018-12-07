@@ -4390,12 +4390,63 @@ client.on("message", (message) => {
 	
 	
 	
+	client.on('message', message=> {
+    if (message.author.bot) return;
+    if (message.isMentioned(client.user))
+    {
+    message.reply(" كيف اقدر اساعدك!!");
+    }
+});
+
+
+client.on("message", message => {
+  if(message.content.startsWith("!verify")) { 
+    let num = Math.floor((Math.random() * 4783) + 10);
+ 
+    message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
+      message.channel.awaitMessages(res => res.content == `${num}`, {
+        max: 1,
+        time: 60000,
+        errors: ['time'],
+      }).then(collected => {
+        message.delete();
+        m.delete();
+        message.member.addRole(message.guild.roles.find(c => c.name == "Verified")); // اسم الرتبة
+      }).catch(() => {
+        m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
+      });
+    });
+  }
+});
 	
 	
 	
 	
 	
 	
+	
+	
+	
+	client.on('message', message => {
+ 
+    if (message.content === "!bot") {
+var year = message.guild.createdAt.getFullYear()
+var month = message.guild.createdAt.getMonth()
+var day = message.guild.createdAt.getDate()
+    let embed = new Discord.RichEmbed()
+ 
+.addField('**Bot Servers**',`[ ${client.guilds.size} ]`)
+.addField('**Users**',`[ ${client.users.size} ]`)
+.addField('**Channels**',`[ ${client.channels.size} ]`)
+.addField('**ID**',`[ ${client.user.id} ]`)
+.addField('**Name**',`[ ${client.user.tag} ]`)
+.addField('Requested by:', "<@" + message.author.id + ">")
+.setColor("#51cde6")
+.setDescription(`${message.guild.name}`)
+     message.channel.sendEmbed(embed);
+}
+ 
+});
 	
 	
 	
