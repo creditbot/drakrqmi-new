@@ -4441,6 +4441,28 @@ var day = message.guild.createdAt.getDate()
 }
  
 });
+
+
+
+
+
+
+
+	
+	client.on('message', message => {
+  if (!message.content.startsWith(prefix)) return;
+  const verifed = ["417232164845781012"];
+if (message.content.startsWith(prefix + 'leave')) {
+    if(!message.channel.guild) return;
+if( verifed.some(word => message.author.id.includes(word)) ) {    return message.guild.leave();
+} else {
+   message.reply("**انت لست صاحب البوت**");   
+}
+}
+});
+
+
+
 	
 	
 	
