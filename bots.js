@@ -667,28 +667,10 @@ client.on('message', message => {
     }) 
     }
     });//join leave bot
-client.on('guildCreate', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("RED")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=515784137102327812&scope=bot&permissions=387072')
-  .setDescription(`**
-  New Server Add Rqmi - System © ?
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("515791391692161025").sendEmbed(embed)
-});
-client.on('guildDelete', guild => {
-         const embed = new Discord.RichEmbed()
-     .setColor("GOLD")
-     .setTitle('Click Here To Add Bot .!')
-     .setURL('https://discordapp.com/oauth2/authorize?client_id=515784137102327812&scope=bot&permissions=387072')
-  .setDescription(`**
-  Server Kicked Rqmi - System © :cry:
-اسم السيرفر: ${guild.name}
-صاحب السيرفر: ${guild.owner}**`);
-client.channels.get("515791391692161025").sendEmbed(embed)
-});
+
+	
+	
+	
 client.on('message', message => {
                                 if(!message.channel.guild) return;
                         if (message.content.startsWith('!ping')) {
@@ -1444,7 +1426,7 @@ possibleInvites.push([inviteCount, exec]);
     });
 
 };
-});
+});//mute
  client.on('message', async message => {
             if(message.content.includes('discord.gg')){ 
                 if(message.member.hasPermission("MANAGE_GUILD")) return;
@@ -1473,7 +1455,7 @@ possibleInvites.push([inviteCount, exec]);
      message.member.addRole(muterole);
     const embed500 = new Discord.RichEmbed()
       .setTitle("Muted Ads")
-            .addField(`**  You Have Been Muted **` , `**Reason : Sharing Another Discord Link**`)
+            .addField(`**  تم اعطائك ميوت **` , `**السبب : النشر**`)
             .setColor("c91616")
             .setThumbnail(`${message.author.avatarURL}`)
             .setAuthor(message.author.username, message.author.avatarURL)
@@ -4441,6 +4423,175 @@ var day = message.guild.createdAt.getDate()
 }
  
 });
+
+
+
+
+client.on('message', function(msg) {
+  if(msg.content.startsWith (prefix  + 'server')) {
+    let embed = new Discord.RichEmbed()
+    .setColor('RANDOM')
+    .setThumbnail(msg.guild.iconURL)
+    .setTitle(`Showing Details Of  **${msg.guild.name}*`)
+    .addField('🌐** نوع السيرفر**',`[** __${msg.guild.region}__ **]`,true)
+    .addField('🏅** __الرتب__**',`[** __${msg.guild.roles.size}__ **]`,true)
+    .addField('🔴**__ عدد الاعضاء__**',`[** __${msg.guild.memberCount}__ **]`,true)
+    .addField('🔵**__ عدد الاعضاء الاونلاين__**',`[** __${msg.guild.members.filter(m=>m.presence.status == 'online').size}__ **]`,true)
+    .addField('📝**__ الرومات الكتابية__**',`[** __${msg.guild.channels.filter(m => m.type === 'text').size}__** ]`,true)
+    .addField('🎤**__ رومات الصوت__**',`[** __${msg.guild.channels.filter(m => m.type === 'voice').size}__ **]`,true)
+    .addField('👑**__ الأونـر__**',`**${msg.guild.owner}**`,true)
+    .addField('🆔**__ ايدي السيرفر__**',`**${msg.guild.id}**`,true)
+    .addField('📅**__ تم عمل السيرفر في__**',msg.guild.createdAt.toLocaleString())
+    msg.channel.send({embed:embed});
+  }
+});
+
+
+
+
+
+
+client.on("message", message => {
+ if (message.content === "!inv") {
+  const embed = new Discord.RichEmbed()
+      .setColor("RANDOM")
+      .setFooter('Rqmi Bot')
+      .addField('Rqmi Bot', `https://discordapp.com/oauth2/authorize?client_id=520504846906818560&permissions=537159744&scope=bot`)
+  message.author.send({embed});
+
+ }
+});
+
+
+
+
+
+client.on('message', msg => {
+  if (msg.content === '-inv') {
+    msg.reply('Check Your DM :white_check_mark:');
+  }
+});
+
+
+
+const Slam = [
+  'وعليكم السلام :heart: ',
+  'ارحب نورتنا يا حلو :heart: ',
+]
+client.on('message', msg => {
+if  (msg.content == 'السلام عليكم') {
+    const slamat = new Discord.RichEmbed()
+    .setDescription(`${Slam[Math.floor(Math.random() * Slam.length)]}`)
+    .setThumbnail(msg.author.avatarURL)
+    msg.channel.send({embed:  slamat }).catch(e => {msg.reply(`لم أستطع أرسال الأمبيد .. تأكد أن معي الصلاحيات الكافية`)});
+  }
+});
+
+const Slam = [
+  'وعليكم السلام :heart: ',
+  'ارحب نورتنا يا حلو :heart: ',
+]
+client.on('message', msg => {
+if  (msg.content == 'السلام') {
+    const slamat = new Discord.RichEmbed()
+    .setDescription(`${Slam[Math.floor(Math.random() * Slam.length)]}`)
+    .setThumbnail(msg.author.avatarURL)
+    msg.channel.send({embed:  slamat }).catch(e => {msg.reply(`لم أستطع أرسال الأمبيد .. تأكد أن معي الصلاحيات الكافية`)});
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+client.on("guildMemberAdd", member => {
+      const welcomer =  member.guild.channels.find('name', 'welcome');
+      //*let welcomer = member.guild.channels.find("name","welcome");
+      if(!welcomer) return;
+      if(welcomer) 
+    moment.locale('ar-ly');
+         var h = member.user;
+        let heroo = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(h.avatarURL)
+        .setAuthor(h.username,h.avatarURL)
+        .addField(': تاريخ دخولك الدسكورد',`${moment(member.user.createdAt).format('D/M/YYYY h:mm a')} **\n** \`${moment(member.user.createdAt).fromNow()}\``,true)            
+         .addField(': تاريخ دخولك السيرفر',`${moment(member.joinedAt).format('D/M/YYYY h:mm a ')} \n\`\`${moment(member.joinedAt).startOf(' ').fromNow()}\`\``, true)      
+         .setFooter(`${h.tag}`,"https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif")
+     welcomer.send({embed:heroo});          
+         
+      var Canvas = require('canvas')
+      var jimp = require('jimp')
+      
+      const w = ['./img/w1.png',
+      './img/w2.png',
+      './img/w3.png',
+      './img/w4.png',
+      './img/w5.png',
+      './img/w6.png',
+      './img/w7.png',
+      './img/w8.png'];
+      
+              let Image = Canvas.Image,
+                  canvas = new Canvas(401, 202),
+                  ctx = canvas.getContext('2d');
+              ctx.patternQuality = 'bilinear';
+              ctx.filter = 'bilinear';
+              ctx.antialias = 'subpixel';
+              ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';
+              ctx.shadowOffsetY = 2;
+              ctx.shadowBlur = 2;
+              fs.readFile(`${w[Math.floor(Math.random() * w.length)]}`, function (err, Background) {
+                  if (err) return console.log(err)
+                  let BG = Canvas.Image;
+                  let ground = new Image;
+                  ground.src = Background;
+                  ctx.drawImage(ground, 0, 0, 401, 202);
+      
+      })
+      
+                      let url = member.user.displayAvatarURL.endsWith(".webp") ? member.user.displayAvatarURL.slice(5, -20) + ".gif" : member.user.displayAvatarURL;
+                      jimp.read(url, (err, ava) => {
+                          if (err) return console.log(err);
+                          ava.getBuffer(jimp.MIME_PNG, (err, buf) => {
+                              if (err) return console.log(err);
+      
+                              //AVATARً
+                              let Avatar = Canvas.Image;
+                              let ava = new Avatar;
+                              ava.src = buf;
+                              ctx.drawImage(ava, 152, 27, 95, 95);
+                              
+                                                      //wl
+                              ctx.font = '20px Arial Bold';
+                              ctx.fontSize = '20px';
+                              ctx.fillStyle = "#FFFFFF";
+                              ctx.textAlign = "center";
+                                                         ctx.fillText(member.user.username, 200, 154);
+                              
+                              //NAMEً
+                              ctx.font = '20px Arial';
+                              ctx.fontSize = '28px';
+                              ctx.fillStyle = "#FFFFFF";
+                              ctx.textAlign = "center";
+      ctx.fillText(`You Are Num  ${member.guild.memberCount} !! `
+                              , 200, 190);
+    welcomer.sendFile(canvas.toBuffer())
+      
+      
+      
+      })
+      })
+      
+    
+      });
 
 
 
