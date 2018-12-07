@@ -581,7 +581,7 @@ if (command == "delete") {
 });  
 client.on('message', bz => {
                         let args = bz.content.split(" ").slice(1).join(" ")
-if(bz.content.startsWith(prefix + 'make')) {
+if(bz.content.startsWith(prefix + 'createcolor')) {
     if(!args) return bz.channel.send('`الرجاء اختيار رقم!`');
              if (!bz.member.hasPermission('MANAGE_ROLES')) return bz.channel.sendMessage('`** `[MANAGE_ROLES]` !**'); 
               bz.channel.send(`**Created __${args}__ Colors**`);
@@ -1292,13 +1292,13 @@ client.on('guildMemberAdd', member => {
     let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(memberavatar)
-        .addField('Hello Dude' , `Welcome to the server **${member}**`)
+        .addField('مرحبا صديقي' , `مرحبآ بك في سيرفر **${member}**`)
         .addField('User Id :', "**[" + `${member.id}` + "]**" )
-                .addField(' Member Number',`${member.guild.memberCount}`)
+                .addField(' عدد الأعضاء',`${member.guild.memberCount}`)
                
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
+                  .addField("الأسم:",`<@` + `${member.id}` + `>`, true)
                       
-                                     .addField(' Server', `${member.guild.name}`,true)
+                                     .addField(' السيرفر', `${member.guild.name}`,true)
 .setFooter(member.user.username,'https://images-ext-2.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/orcid.org/sites/default/files/files/ID_symbol_B-W_128x128.gif')  
 
                                        
@@ -1731,321 +1731,14 @@ let welcomer = member.guild.channels.find("name","welcome");
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From **${message.author.tag} (${message.author.id})**`)
-    client.channels.get("518500837803425794").send({embed:iiMo});
+	client.channels.find('name', 'log').send({embed:iiMo});
     }
 });
 
+//test
 
 
 
-
-
-
-client.on("guildCreate", guild => {
-var gimg;
-var gname;
-var gmemb;
-var groles;
-
-gname = guild.name;
-gimg = guild.iconURL;
-gmemb = guild.members.size;
-groles = guild.roles.map(r=> {return r.name});
-  let channel = client.channels.get('518500837106909224')
-    if(!channel) return;
-const e = new Discord.RichEmbed()
-.setColor('#36393e')
-.addField('Bot Joined Guild : ', `${guild.name}`)
-.addField('Guild id : ', `${guild.id}`)
-.addField('Guild UserCount : ',gmemb = guild.members.size)
-.addField('Guild Owner : ', guild.owner)
-.setThumbnail(gimg)
-.setTimestamp()
- channel.send(e);
-
-});
-
-
-client.on("guildDelete", guild => {
-var gimg;
-var gname;
-var gmemb;
-var groles;
-
-gname = guild.name;
-gimg = guild.iconURL;
-gmemb = guild.members.size;
-groles = guild.roles.map(r=> {return r.name});
-  let channel = client.channels.get('518500837106909224')
-  if(!channel) return;
-const e = new Discord.RichEmbed()
-.setColor('#36393e')
-.addField('Bot Left Guild : ', `${guild.name}`)
-.addField('Guild id : ', `${guild.id}`)
-.addField('Guild UserCount : ',gmemb = guild.members.size)
-.addField('Guild Owner : ', guild.owner)
-.setThumbnail(gimg)
-.setTimestamp()
- channel.send(e);
-
-});
- 
-
-client.on('voiceStateUpdate', (oldM, newM) => {
-  let m1 = oldM.serverMute;
-  let m2 = newM.serverMute;
-  let d1 = oldM.serverDeaf;
-  let d2 = newM.serverDeaf;
-
-  let ch = oldM.guild.channels.find('name', 'log')
-  if(!ch) return;
-
-    oldM.guild.fetchAuditLogs()
-    .then(logs => {
-
-      let user = logs.entries.first().executor.username
-
-    if(m1 === false && m2 === true) {
-       let embed = new Discord.RichEmbed()
-       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(` ${user} اخــذ مــيــوت صــوتــي بــواســطــه  ${newM} `)
-       .setColor('#36393e')
-        .setTimestamp()
-       ch.send(embed)
-    }
-    if(m1 === true && m2 === false) {
-       let embed = new Discord.RichEmbed()
-       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(` ${user} فــك عــنــه  مــيــوت صــوتــي بــواســطــه  ${newM} `)
-       .setColor('#36393e')
-       .setTimestamp()
-       ch.send(embed)
-    }
-    if(d1 === false && d2 === true) {
-       let embed = new Discord.RichEmbed()
-       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(` ${user}  اخــذ ديــفــن صــوتــي بــواســطــه   ${newM}`)
-       .setColor('#36393e')
-       .setTimestamp()
-
-       ch.send(embed)
-    }
-    if(d1 === true && d2 === false) {
-       let embed = new Discord.RichEmbed()
-       .setAuthor(`${newM.user.tag}`, newM.user.avatarURL)
-       .setDescription(` ${user}  فــك عــنــه ديــفــن صــوتــي بــواســطــه   ${newM}`)
-       .setColor('#36393e')
-       .setTimestamp()
-
-       ch.send(embed)
-    }
-  })
-})
-
-
-  client.on('messageUpdate', (message, newMessage) => {
-    if (message.content === newMessage.content) return;
-    if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-    const channel = message.guild.channels.find('name', 'log');
-    if (!channel) return;
- 
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${message.author.tag}`, message.author.avatarURL)
-.setTitle(' تــعــديــل رســالــه  :  ')
-.addField('قــبــل الــتــعــديــل',`${message.cleanContent}`)
-.addField(' بــعــد  الــتــعــديــل ',`${newMessage.cleanContent}`)
-.addField(' عــدلــت فــي  ',`<#${message.channel.id}>`)
-.addField(' يــواســطــه  ', `<@${message.author.id}> `)
-.setColor('#36393e')
-       .setTimestamp();
-     channel.send({embed:embed});
- 
- 
-});
- 
-client.on('guildMemberAdd', member => {
-    if (!member || !member.id || !member.guild) return;
-    const guild = member.guild;
-   
-    const channel = member.guild.channels.find('name', 'log');
-    if (!channel) return;
-    let memberavatar = member.user.avatarURL
-    const fromNow = moment(member.user.createdTimestamp).fromNow();
-    const isNew = (new Date() - member.user.createdTimestamp) < 900000 ? '??' : '';
-   
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-       .setColor('#36393e')
-       .setDescription(` <@${member.user.id}>  انــضــم لــلــســيــرفــر `)
-       .setTimestamp();
-     channel.send({embed:embed});
-});
- 
-client.on('guildMemberRemove', member => {
-    if (!member || !member.id || !member.guild) return;
-    const guild = member.guild;
-   
-    const channel = member.guild.channels.find('name', 'log');
-    if (!channel) return;
-    let memberavatar = member.user.avatarURL
-    const fromNow = moment(member.joinedTimestamp).fromNow();
-   
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${member.user.tag}`, member.user.avatarURL)
-       .setColor('#36393e')
-       .setDescription(` <@${member.user.id}>  خــرج مــن الــســيــرفــر `)
-       .setTimestamp();
-     channel.send({embed:embed});
-});
- 
-client.on('messageDelete', message => {
-    if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-    const channel = message.guild.channels.find('name', 'log');
-    if (!channel) return;
-   
-    let embed = new Discord.RichEmbed()
-       .setAuthor(`${message.author.tag}`, message.author.avatarURL)
- .setTitle('  مــســح رســالــه  :   ')
- .addField('  الــرســالــه  ',`${message.cleanContent}`)
- .addField('  مــســحــت فــي  ',`<#${message.channel.id}>`)
- .addField(' يــواســطــه  ', `<@${message.author.id}> `)
-       .setColor('#36393e')
-       .setTimestamp();
-     channel.send({embed:embed});
- 
-});
-
-     
-      client.on("roleDelete", role => {
-  client.setTimeout(() => {
-    role.guild.fetchAuditLogs({
-        limit: 1,
-        type: 30
-      })
-      .then(audit => {
-        let exec = audit.entries.map(a => a.executor.username)
-        try {
-
-          let log = role.guild.channels.find('name', 'log');
-          if (!log) return;
-          let embed = new Discord.RichEmbed()
-            .setColor('#36393e')          
-            .setTitle('-  مــســح رتــبــه ')
-            .addField(' اســم الــرتــبــه  ', role.name, true)
-            .addField(' هــويــة الــرتــبــه ', role.id, true)
-            .addField(' لــون الــرتــبــه ', role.hexColor, true)
-            .addField(' بــواســطــه ', exec, true)
-            .setColor('#36393e') 
-            .setTimestamp()
-            
-          log.send(embed).catch(e => {
-            console.log(e);
-          });
-        } catch (e) {
-          console.log(e);
-        }
-      })
-  }, 1000)
-})
-
-
-client.on('roleCreate', role => {
-  client.setTimeout(() => {
-    role.guild.fetchAuditLogs({
-        limit: 1,
-        type: 30
-      })
-      .then(audit => {
-        let exec = audit.entries.map(a => a.executor.username)
-        try {
-
-          let log = role.guild.channels.find('name', 'log');
-          if (!log) return;
-          let embed = new Discord.RichEmbed()
-            .setTitle('+  انــشــاء رتــبــه ')
-            .addField(' اســم الــرتــبــه  ', role.name, true)
-            .addField(' هــويــة الــرتــبــه ', role.id, true)
-            .addField(' لــون الــرتــبــه ', role.hexColor, true)
-            .addField(' بــواســطــه ', exec, true)
-            .setColor('#36393e') 
-            .setTimestamp()
-            
-          log.send(embed).catch(e => {
-            console.log(e);
-          });
-        } catch (e) {
-          console.log(e);
-        }
-      })
-  }, 1000)
-})
-
-
-
-
-  client.on("guildBanAdd", (guild, member) => {
-  client.setTimeout(() => {
-    guild.fetchAuditLogs({
-        limit: 1,
-        type: 22
-      })
-      .then(audit => {
-        let exec = audit.entries.map(a => a.executor.username);
-        try {
-          let log = guild.channels.find('name', 'log');
-          if (!log) return;
-          client.fetchUser(member.id).then(myUser => {
-          let embed = new Discord.RichEmbed()
-        .setAuthor("حــظــر عــضــو :  ")
-        .setColor('#36393e') 
-        .setThumbnail(myUser.avatarURL)
-        .addField(' الــعــضــو  ',`**${myUser.username}**`,true)
-        .addField('  بــواســطــه ',`**${exec}**`,true)
-        .setFooter(myUser.username,myUser.avatarURL)
-            .setTimestamp();
-          log.send(embed).catch(e => {
-            console.log(e);
-          });
-          });
-        } catch (e) {
-          console.log(e);
-        }
-      });
-  }, 1000);
-});
-
-
-
-    client.on("guildBanRemove", (guild, member) => {
-  client.setTimeout(() => {
-    guild.fetchAuditLogs({
-        limit: 1,
-        type: 22
-      })
-      .then(audit => {
-        let exec = audit.entries.map(a => a.executor.username);
-        try {
-          let log = guild.channels.find('name', 'log');
-          if (!log) return;
-          client.fetchUser(member.id).then(myUser => {
-          let embed = new Discord.RichEmbed()
-        .setAuthor("  فــك حــظــر عــن عــضــو ")
-        .setColor('#36393e') 
-		 .setThumbnail(myUser.avatarURL)
-        .addField(' الــعــضــو  ',`**${myUser.username}**`,true)
-        .addField('  بــواســطــه ',`**${exec}**`,true)
-        .setFooter(myUser.username,myUser.avatarURL)
-            .setTimestamp();
-          log.send(embed).catch(e => {
-            console.log(e);
-          });
-          });
-        } catch (e) {
-          console.log(e);
-        }
-      });
-  }, 1000);
-});
 
 
 
@@ -2802,7 +2495,7 @@ suggestchannel.send("@everyone  `||` @here ");
 	const embed = new Discord.RichEmbed()
 		.setDescription('** __:ok_hand: running...to make Channels | يتم الأن عمل الرومات الصويتة والكتابية__ **')
 		.setColor('RANDOM')
-		.setFooter("**Our - System **")
+		.setFooter("**Rqmi - System **")
 	message.channel.sendEmbed(embed);
 
 message.guild.createChannel('Info', 'text');
@@ -3983,7 +3676,7 @@ client.on('message', message => {
 if(message.channel.type === "dm") return;
 if(message.author.bot) return;
   if(!sWlc[message.guild.id]) sWlc[message.guild.id] = {
-    channel: "chat"
+    channel: "welcome"
 }
 const channel = sWlc[message.guild.id].channel
   if (message.content.startsWith(prefix + "setwelcomer")) {
@@ -4411,12 +4104,12 @@ var month = message.guild.createdAt.getMonth()
 var day = message.guild.createdAt.getDate()
     let embed = new Discord.RichEmbed()
  
-.addField('**Bot Servers**',`[ ${client.guilds.size} ]`)
-.addField('**Users**',`[ ${client.users.size} ]`)
-.addField('**Channels**',`[ ${client.channels.size} ]`)
-.addField('**ID**',`[ ${client.user.id} ]`)
-.addField('**Name**',`[ ${client.user.tag} ]`)
-.addField('Requested by:', "<@" + message.author.id + ">")
+.addField('**السيرفرات**',`[ ${client.guilds.size} ]`)
+.addField('**عدد الأعضاء الي في السيرفرات**',`[ ${client.users.size} ]`)
+.addField('**الرومات**',`[ ${client.channels.size} ]`)
+.addField('**الايدي**',`[ ${client.user.id} ]`)
+.addField('**الاسم**',`[ ${client.user.tag} ]`)
+.addField('صانع البوت:', "<@" + message.author.id + ">")
 .setColor("#51cde6")
 .setDescription(`${message.guild.name}`)
      message.channel.sendEmbed(embed);
@@ -4468,7 +4161,7 @@ client.on("message", message => {
 
 client.on('message', msg => {
   if (msg.content === '!inv') {
-    msg.reply('Check Your DM :white_check_mark:');
+    msg.reply('شيك عالخاص :white_check_mark:');
   }
 });
 
@@ -4476,7 +4169,97 @@ client.on('message', msg => {
 
 
 
+  client.on('message', message => {
+            if (message.content.startsWith("السلام")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField ('**وعليكم السلام نورت**', ' :heart: ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
 
+            }
+ });
+ 
+
+
+  client.on('message', message => {
+            if (message.content.startsWith("السلام عليكم")) {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField ('**وعليكم السلام نورت**', ' :heart: ')
+.setColor('#7d2dbe')
+  message.channel.sendEmbed(embed);
+
+            }
+ });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ client.on('message',   eyad =>{ 
+
+    var  args = eyad.content.split(" ").slice(2).join(" ")
+    var men = eyad.mentions.users.first()|| client.users.get(eyad.content.split(' ')[1])
+    var  mas = eyad.author
+                              if(eyad.content.startsWith(prefix + 'sar7')) {
+                              if(eyad.channel.type === "dm"){
+if(!args) return  eyad.channel.send("`حط بعد الايدي الرساله وانا برسلها :)`");
+if(!men) return  eyad.channel.send("`حط ايدي الشخص \n او يقد يكون الشخص ليس موجود في سرفرات مشتركه بيني وبينة`");
+                      var currentTime = new Date(),
+            Year = currentTime.getFullYear(),
+            Month = currentTime.getMonth() + 1,
+            Day = currentTime.getDate();
+     var eyadandr3d = new Discord.RichEmbed()
+     .setAuthor(eyad.author.username , eyad.author.avatarURL)
+     .setThumbnail(men.avatarURL)
+     .setDescription(`هل انت موافق لارسال الرساله \n موافق = ✅ \nرفض = ❌ \n**محتوي الرسالة : *{args}**`)
+     .setTimestamp()
+     .setFooter('لديك 60 ثانية للاختيار')
+     eyad.channel.send(eyadandr3d).then(message => {
+ message.react('✅').then(r=>{
+ message.react('❌').then(r=>{
+    var kk = (reaction, user) => reaction.emoji.name === '✅' && user.id === eyad.author.id;
+    var nn = (reaction, user) => reaction.emoji.name === '❌' && user.id === eyad.author.id;
+    var kkk = message.createReactionCollector(kk, { time: 60000 });
+    var nnn = message.createReactionCollector(nn, { time: 60000 });
+kkk.on("collect", r => {
+          const embed = new Discord.RichEmbed()
+               .setThumbnail("https://cdn.discordapp.com/attachments/429056808561278979/450412294078332948/download.jpg")
+               .setColor("RANDOM")
+               .addField('**●[اهلا بك]** ', `<@*{men.id}>` , true)
+               .addField('**●[لقد تمت مصارحتك]**' ,       ` __*{args}__ ` , true)
+               .addField('**●[تاريخ المصارحة]**' , Day + "-" + Month + "-" + Year , true)
+          client.users.get(men.id).sendEmbed(embed)
+          eyad.reply(`لقد تم ارسال الصراحه للشخص \n <@*{men.id}>`)
+message.delete()
+          eyad.delete();
+})
+nnn.on("collect", r => {
+message.delete()
+eyad.reply("`تم الغاء الصراحة`")
+eyad.delete();
+})
+})
+})
+})
+}
+}
+});
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 	
 	
