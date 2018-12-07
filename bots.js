@@ -2779,7 +2779,7 @@ suggestchannel.send("@everyone  `||` @here ");
             .setColor('RED')
             .setFooter(`==== Gòǒd Luck ♦=====`, 'https://cdn.pg.sa/GeQGucQhBR.gif')
         
-        var channel =member.guild.channels.find('name', 'chat')
+        var channel =member.guild.channels.find('name', 'welcome')
         if (!channel) return;
         channel.send({embed : embed});
         })
