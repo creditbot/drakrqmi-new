@@ -4169,89 +4169,53 @@ client.on('message', msg => {
 
 
 
-  client.on('message', message => {
-            if (message.content.startsWith("السلام")) {
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField ('**وعليكم السلام نورت**', ' :heart: ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
-
-            }
- });
- 
 
 
-  client.on('message', message => {
-            if (message.content.startsWith("السلام عليكم")) {
-     let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
-.addField ('**وعليكم السلام نورت**', ' :heart: ')
-.setColor('#7d2dbe')
-  message.channel.sendEmbed(embed);
+const translate = require('google-translate-api');
+const Langs = ['afrikaans', 'albanian', 'amharic', 'arabic', 'armenian', 'azerbaijani', 'bangla', 'basque', 'belarusian', 'bengali', 'bosnian', 'bulgarian', 'burmese', 'catalan', 'cebuano', 'chichewa', 'chinese simplified', 'chinese traditional', 'corsican', 'croatian', 'czech', 'danish', 'dutch', 'english', 'esperanto', 'estonian', 'filipino', 'finnish', 'french', 'frisian', 'galician', 'georgian', 'german', 'greek', 'gujarati', 'haitian creole', 'hausa', 'hawaiian', 'hebrew', 'hindi', 'hmong', 'hungarian', 'icelandic', 'igbo', 'indonesian', 'irish', 'italian', 'japanese', 'javanese', 'kannada', 'kazakh', 'khmer', 'korean', 'kurdish (kurmanji)', 'kyrgyz', 'lao', 'latin', 'latvian', 'lithuanian', 'luxembourgish', 'macedonian', 'malagasy', 'malay', 'malayalam', 'maltese', 'maori', 'marathi', 'mongolian', 'myanmar (burmese)', 'nepali', 'norwegian', 'nyanja', 'pashto', 'persian', 'polish', 'portugese', 'punjabi', 'romanian', 'russian', 'samoan', 'scottish gaelic', 'serbian', 'sesotho', 'shona', 'sindhi', 'sinhala', 'slovak', 'slovenian', 'somali', 'spanish', 'sundanese', 'swahili', 'swedish', 'tajik', 'tamil', 'telugu', 'thai', 'turkish', 'ukrainian', 'urdu', 'uzbek', 'vietnamese', 'welsh', 'xhosa', 'yiddish', 'yoruba', 'zulu'];
 
-            }
- });
- 
- 
- 
- 
- 
- 
- 
- 
- 
- client.on('message',   eyad =>{ 
+client.on('message', message => {
+if (message.content.startsWith(prefix + 'translate')) {
+    let args = message.content.split(" ").slice(1);
+    if (!args[0]) {
+    
+        const embed = new Discord.RichEmbed()
+            .setColor("FFFFFF")
+            .setDescription("**ترجمة الكتابة.**\استعمل: `-translate <الكمة لتبي> <االغة>`");
 
-    var  args = eyad.content.split(" ").slice(2).join(" ")
-    var men = eyad.mentions.users.first()|| client.users.get(eyad.content.split(' ')[1])
-    var  mas = eyad.author
-                              if(eyad.content.startsWith(prefix + 'sar7')) {
-                              if(eyad.channel.type === "dm"){
-if(!args) return  eyad.channel.send("`حط بعد الايدي الرساله وانا برسلها :)`");
-if(!men) return  eyad.channel.send("`حط ايدي الشخص \n او يقد يكون الشخص ليس موجود في سرفرات مشتركه بيني وبينة`");
-                      var currentTime = new Date(),
-            Year = currentTime.getFullYear(),
-            Month = currentTime.getMonth() + 1,
-            Day = currentTime.getDate();
-     var eyadandr3d = new Discord.RichEmbed()
-     .setAuthor(eyad.author.username , eyad.author.avatarURL)
-     .setThumbnail(men.avatarURL)
-     .setDescription(`هل انت موافق لارسال الرساله \n موافق = ✅ \nرفض = ❌ \n**محتوي الرسالة : *{args}**`)
-     .setTimestamp()
-     .setFooter('لديك 60 ثانية للاختيار')
-     eyad.channel.send(eyadandr3d).then(message => {
- message.react('✅').then(r=>{
- message.react('❌').then(r=>{
-    var kk = (reaction, user) => reaction.emoji.name === '✅' && user.id === eyad.author.id;
-    var nn = (reaction, user) => reaction.emoji.name === '❌' && user.id === eyad.author.id;
-    var kkk = message.createReactionCollector(kk, { time: 60000 });
-    var nnn = message.createReactionCollector(nn, { time: 60000 });
-kkk.on("collect", r => {
-          const embed = new Discord.RichEmbed()
-               .setThumbnail("https://cdn.discordapp.com/attachments/429056808561278979/450412294078332948/download.jpg")
-               .setColor("RANDOM")
-               .addField('**●[اهلا بك]** ', `<@*{men.id}>` , true)
-               .addField('**●[لقد تمت مصارحتك]**' ,       ` __*{args}__ ` , true)
-               .addField('**●[تاريخ المصارحة]**' , Day + "-" + Month + "-" + Year , true)
-          client.users.get(men.id).sendEmbed(embed)
-          eyad.reply(`لقد تم ارسال الصراحه للشخص \n <@*{men.id}>`)
-message.delete()
-          eyad.delete();
-})
-nnn.on("collect", r => {
-message.delete()
-eyad.reply("`تم الغاء الصراحة`")
-eyad.delete();
-})
-})
-})
-})
-}
+        return message.channel.send(embed);
+
+    } else {
+
+        if (args.length === undefined) {
+
+            return message.channel.send("**ترجمة الكتابة.**\استعمل: `-translate <الكمة لتبي> <االغة>`");
+
+        } else {
+
+            let transArg = args[0].toLowerCase();
+
+            args = args.join(' ').slice(1)
+            let translation;
+
+            if (!Langs.includes(transArg)) return message.channel.send(`**Language not found.**`);
+            args = args.slice(transArg.length);
+
+            translate(args, {
+                to: transArg
+            }).then(res => {
+
+                const embed = new Discord.RichEmbed()
+                    .setAuthor("Translator", client.user.displayAvatarURL)
+                    .addField(`Input`, `\`\`\`${args}\`\`\``)
+                    .setColor("#42f4c8")
+                    .addField(`Output`, `\`\`\`${res.text}\`\`\``);
+                return message.channel.send(embed);
+            });
+        }
+    }
 }
 });
- 
- 
  
  
  
