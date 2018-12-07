@@ -4109,14 +4109,7 @@ member.guild.fetchInvites().then(guildInvites => {
 	
 	
 	
-	
-	client.on("ready", () => {
-  function lol() {
-    client.guilds.get('518479965533241366').roles.find("name", "♛『Rainbow』♛").setColor("RANDOM");
-  };
-  setInterval(lol, 1600);
-});
-	
+
 	
 	
 	
@@ -4411,7 +4404,7 @@ client.on("message", message => {
       }).then(collected => {
         message.delete();
         m.delete();
-		message.reply(" تم تفعيلك بنجاح");
+		message.channel.send(`تم تفعيلك بنجاح`);
         message.member.addRole(message.guild.roles.find(c => c.name == "Verified")); // اسم الرتبة
       }).catch(() => {
         m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
@@ -4450,10 +4443,6 @@ var day = message.guild.createdAt.getDate()
 });
 	
 	
-	
-	
-
-
 	
 
 client.login(process.env.BOT_TOKEN)
