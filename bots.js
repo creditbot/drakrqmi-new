@@ -4474,43 +4474,6 @@ client.on('message', msg => {
 
 
 
-const Slam = [
-  'وعليكم السلام :heart: ',
-  'ارحب نورتنا يا حلو :heart: ',
-]
-client.on('message', msg => {
-if  (msg.content == 'السلام عليكم') {
-    const slamat = new Discord.RichEmbed()
-    .setDescription(`${Slam[Math.floor(Math.random() * Slam.length)]}`)
-    .setThumbnail(msg.author.avatarURL)
-    msg.channel.send({embed:  slamat }).catch(e => {msg.reply(`لم أستطع أرسال الأمبيد .. تأكد أن معي الصلاحيات الكافية`)});
-  }
-});
-
-const Slam = [
-  'وعليكم السلام :heart: ',
-  'ارحب نورتنا يا حلو :heart: ',
-]
-client.on('message', msg => {
-if  (msg.content == 'السلام') {
-    const slamat = new Discord.RichEmbed()
-    .setDescription(`${Slam[Math.floor(Math.random() * Slam.length)]}`)
-    .setThumbnail(msg.author.avatarURL)
-    msg.channel.send({embed:  slamat }).catch(e => {msg.reply(`لم أستطع أرسال الأمبيد .. تأكد أن معي الصلاحيات الكافية`)});
-  }
-});
-
-
-
-
-
-
-
-
-
-
-
-
 client.on("guildMemberAdd", member => {
       const welcomer =  member.guild.channels.find('name', 'welcome');
       //*let welcomer = member.guild.channels.find("name","welcome");
