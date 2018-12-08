@@ -2428,11 +2428,11 @@ channelCreated = ra3deyad.createdAt
     let suggestchannel = message.mentions.channels.first();
 
     if (!suggestchannel) {
-        return message.reply("Please Mention the channel!")
+        return message.reply("منشن الروم!")
     }
 
     if (!suggestmessage) {
-        return message.reply("Plase Give Text To send Channel!")
+        return message.reply("اكتب الرسالة!")
     
          
     }
@@ -2449,7 +2449,7 @@ suggestchannel.send("@everyone  `||` @here ");
     });
 
 
-    message.reply(`Your message is sended.`).then(msg => msg.delete(1000));
+    message.reply(`تم ارسال رسالتك.`).then(msg => msg.delete(1000));
     return;
 }
 });
@@ -4406,15 +4406,6 @@ client.on('messageUpdate', (message, newMessage) => {
 
  
  
- 
- 
-    if(command == prefix + 'myid') {
-		
-		let embedID = new Discord.RichEmbed()
-		.setDescription(`<@${message.author.id}>'s ID: **${message.author.id}**`)
-		
-		message.channel.send(embedID);
-	};
 	
 	
 	
