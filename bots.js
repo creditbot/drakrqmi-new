@@ -4277,4 +4277,4 @@ MEGA : __${sw[MEGA.guild.id].msk}__`)
 	
 	
 
-client.login(process.env.BOT_TOKEN)
+client.login(process.env.BOT_TOKEN);
