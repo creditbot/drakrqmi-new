@@ -3913,6 +3913,231 @@ client.on('message', message => {
  
  
  
+ 
+ 
+ 
+ 
+ 
+ client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'CrossFire')) {       
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(` CrossFire Click Right to Get a Rank  `).then(msg => {
+       
+       
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+ 
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                       
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "CrossFire"));
+                                   message.member.removeRole(message.guild.roles.find("name", "0"));
+                                   msg.delete();
+                                   message.channel.send(`**You Have been Activated.**`).then(m => m.delete(1000));  
+
+                                   })
+                                   })
+                                   }
+                                   });
+
+
+
+
+ 
+ 
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'BlackSquad')) {       
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(` BlackSquad Click Right to Get a Rank  `).then(msg => {
+       
+       
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+ 
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                       
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "BlackSquad"));
+                                   message.member.removeRole(message.guild.roles.find("name", "0"));
+                                   msg.delete();
+                                   message.channel.send(`**You Have been Activated.**`).then(m => m.delete(1000));  
+
+                                   })
+                                   })
+                                   }
+                                   });
+
+
+
+ 
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'PUBG')) {       
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(` PUBG Click Right to Get a Rank  `).then(msg => {
+       
+       
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+ 
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                       
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "PUBG"));
+                                   message.member.removeRole(message.guild.roles.find("name", "0"));
+                                   msg.delete();
+                                   message.channel.send(`**You Have been Activated.**`).then(m => m.delete(1000));  
+
+                                   })
+                                   })
+                                   }
+                                   });
+
+
+ 
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'Minecraft')) {       
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(` Minecraft Click Right to Get a Rank  `).then(msg => {
+       
+       
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+ 
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                       
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "Minecraft"));
+                                   message.member.removeRole(message.guild.roles.find("name", "0"));
+                                   msg.delete();
+                                   message.channel.send(`**You Have been Activated.**`).then(m => m.delete(1000));  
+
+                                   })
+                                   })
+                                   }
+                                   });
+
+
+
+ 
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'Fortnite')) {       
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(` Fortnite Click Right to Get a Rank  `).then(msg => {
+       
+       
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+ 
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                       
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "Fortnite"));
+                                   message.member.removeRole(message.guild.roles.find("name", "0"));
+                                   msg.delete();
+                                   message.channel.send(`**You Have been Activated.**`).then(m => m.delete(1000));  
+
+                                   })
+                                   })
+                                   }
+                                   });
+
+ 
+ 
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'Leagueoflegends')) {       
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(` Leagueoflegends Click Right to Get a Rank  `).then(msg => {
+       
+       
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+ 
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                       
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "Leagueoflegends"));
+                                   message.member.removeRole(message.guild.roles.find("name", "0"));
+                                   msg.delete();
+                                   message.channel.send(`**You Have been Activated.**`).then(m => m.delete(1000));  
+
+                                   })
+                                   })
+                                   }
+                                   });
+
+ 
+client.on('message', message => {                      
+    if(!message.channel.guild) return;
+       if(message.content.startsWith(prefix + 'Brawlhalla')) {       
+       if(!message.channel.guild) return message.channel.send('**هذا الأمر فقط للسيرفرات**').then(m => m.delete(5000));
+       message.channel.sendMessage(` Brawlhalla Click Right to Get a Rank  `).then(msg => {
+       
+       
+        msg.react('✅')
+       .then(() => msg.react('✅'))
+     
+     
+ 
+       let activeFilter = (reaction, user) => reaction.emoji.name === '✅' && user.id === message.author.id;
+     
+       let active = msg.createReactionCollector(activeFilter, { time: 15000 });
+     
+                                                       
+                               active.on("collect", r => {
+                                   message.member.addRole(message.guild.roles.find("name", "Brawlhalla"));
+                                   message.member.removeRole(message.guild.roles.find("name", "0"));
+                                   msg.delete();
+                                   message.channel.send(`**You Have been Activated.**`).then(m => m.delete(1000));  
+
+                                   })
+                                   })
+                                   }
+                                   });
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 
 	
 	
