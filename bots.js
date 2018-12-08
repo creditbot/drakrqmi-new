@@ -4129,16 +4129,16 @@ client.on("message", message => {
 		.setFooter("**Rqmi - System **")
 	message.channel.sendEmbed(embed);
 
-message.guild.createChannel('✵ INFO | معلومات', 'category');
+message.guild.createChannel('✵ INFO | معلومات', 'Voice');
 message.guild.createChannel('✵-「info', 'text');
 message.guild.createChannel('✵-「news', 'text');
 message.guild.createChannel('✵-「vote', 'text');
 message.guild.createChannel('✵-「ranks-news', 'text');
 message.guild.createChannel('✵-「الفروع', 'text');
-message.guild.createChannel('✵ Rewards ✵', 'Category');
+message.guild.createChannel('✵ Rewards ✵', 'Voice');
 message.guild.createChannel('✵-「giveaway', 'text');
 message.guild.createChannel('✵-「invite-reward', 'text');
-message.guild.createChannel('✵ Rqmi System ✵', 'Category');
+message.guild.createChannel('✵ Rqmi System ✵', 'Voice');
 message.guild.createChannel('✵-「p-chat', 'text');
 message.guild.createChannel('✵-「bot', 'text');
 message.guild.createChannel('✵-「pictures', 'text');
@@ -4146,15 +4146,15 @@ message.guild.createChannel('✵-「helpme', 'text');
 message.guild.createChannel('✵-「youtube-explained', 'text');
 message.guild.createChannel('✵-「thx-proof', 'text');
 message.guild.createChannel('✵-「sugg', 'text');
-message.guild.createChannel('✵ Support | دعم فني ✵', 'category');
+message.guild.createChannel('✵ Support | دعم فني ✵', 'Voice');
 message.guild.createChannel('✵-「اقتراحات', 'text');
-message.guild.createChannel('✵ Public | Voice ✵', 'category');
+message.guild.createChannel('✵ Public | Voice ✵', 'Voice');
 message.guild.createChannel('✵-「Music', 'voice');
 message.guild.createChannel('✵-「Qurain', 'voice');
 message.guild.createChannel('✵-「Team', 'voice');
 message.guild.createChannel('✵-「Play', 'Voice');
-message.guild.createChannel('✵ AFK ✵', 'category');
-message.guild.createChannel('✵-「AFK', 'voice');
+message.guild.createChannel('✵ AFK ✵', 'Voice');
+message.guild.createChannel('✵-「AFK', 'Voice');
 
   console.log(`i make text channels in this server: ** ${message.guild.name} ** `)
   
