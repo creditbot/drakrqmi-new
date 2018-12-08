@@ -2413,27 +2413,7 @@ suggestchannel.send("@everyone  `||` @here ");
 
 	
 	
-	
-	
-	
-	client.on('message', message => {
-         if (message.content === "!createserver") {
-		       if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**يحتاج البوت الى خاصية` MANAGE_CHANNELS ` **").then(msg => msg.delete(6000))
 
-                       if(!message.channel.guild) return message.reply('** This command only for servers **');
-	                         if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**أنت ليس لديك برمشن** `ADMINISTRATOR`' );
-	const embed = new Discord.RichEmbed()
-		.setDescription('** __:ok_hand: running...to make Channels | يتم الأن عمل الرومات الصويتة والكتابية__ **')
-		.setColor('RANDOM')
-		.setFooter("**Rqmi - System **")
-	message.channel.sendEmbed(embed);
-
-message.guild.createChannel('text', 'category');
-
-  console.log(`i make text channels in this server: ** ${message.guild.name} ** `)
-  
-}
-});
 	
 	
 	
@@ -4001,7 +3981,7 @@ client.on('messageUpdate', (message, newMessage) => {
 		if(message.author.bot) return;
 		if(message.channel.type === 'dm') return;
 		var member = message.author.id;
-		var channel = message.guild.channels.find('name', '⫸【『الاقتراحات』】');
+		var channel = message.guild.channels.find('name', '✵-「اقتراحات');
 		if(!channel) return;
 		var sug = message.content.split(' ').slice(1).join(' ');
         if(!sug) return message.channel.send(`**➥ Useage:** ${prefix}sug <اقتراحك>`).then(msg => msg.delete(5000));
@@ -4062,6 +4042,25 @@ No.on("collect", r => {
     }
   });;
 
+  
+  
+  
+  client.on('message', drak => {
+var prefix = "!";
+                        let args = drak.content.split(" ").slice(1).join(" ")
+if(drak.content.startsWith(prefix + 'createcolor')) {
+    if(!args) return drak.channel.send('`يرجي اختيار كم لون `');
+             if (!drak.member.hasPermission('MANAGE_ROLES')) return drak.channel.sendMessage('`**⚠ | `[MANAGE_ROLES]` لا يوجد لديك صلاحية**'); 
+              drak.channel.send(`**✅ |Created __${args}__ Colors**`);
+                  setInterval(function(){})
+                    let count = 0;
+                    let ecount = 0;
+          for(let x = 1; x < `${parseInt(args)+1}`; x++){
+            drak.guild.createRole({name:x,
+              color: 'RANDOM'})
+              }
+            }
+       });
  
  
  
@@ -4098,6 +4097,126 @@ client.on("message", message => {
 // ملف تخزين اللفل والنقاط
 });
 //طبعا لتنضيف الشات يمسح كل ديقيقة الرسالة 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 	
+	
+	
+	client.on('message', message => {
+         if (message.content === "!createserver") {
+		       if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**يحتاج البوت الى خاصية` MANAGE_CHANNELS ` **").then(msg => msg.delete(6000))
+
+                       if(!message.channel.guild) return message.reply('** This command only for servers **');
+	                         if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**أنت ليس لديك برمشن** `ADMINISTRATOR`' );
+	const embed = new Discord.RichEmbed()
+		.setDescription('** __:ok_hand: running...to make Channels | يتم الأن عمل الرومات الصويتة والكتابية__ **')
+		.setColor('RANDOM')
+		.setFooter("**Rqmi - System **")
+	message.channel.sendEmbed(embed);
+
+message.guild.createChannel('✵ INFO | معلومات', 'category');
+message.guild.createChannel('✵-「info', 'text');
+message.guild.createChannel('✵-「news', 'text');
+message.guild.createChannel('✵-「vote', 'text');
+message.guild.createChannel('✵-「ranks-news', 'text');
+message.guild.createChannel('✵-「الفروع', 'text');
+message.guild.createChannel('✵ Rewards ✵', 'Category');
+message.guild.createChannel('✵-「giveaway', 'text');
+message.guild.createChannel('✵-「invite-reward', 'text');
+message.guild.createChannel('✵ Rqmi System ✵', 'Category');
+message.guild.createChannel('✵-「p-chat', 'text');
+message.guild.createChannel('✵-「bot', 'text');
+message.guild.createChannel('✵-「pictures', 'text');
+message.guild.createChannel('✵-「helpme', 'text');
+message.guild.createChannel('✵-「youtube-explained', 'text');
+message.guild.createChannel('✵-「thx-proof', 'text');
+message.guild.createChannel('✵-「sugg', 'text');
+message.guild.createChannel('✵ Support | دعم فني ✵', 'category');
+message.guild.createChannel('✵-「اقتراحات', 'text');
+message.guild.createChannel('✵ Public | Voice ✵', 'category');
+message.guild.createChannel('✵-「Music', 'voice');
+message.guild.createChannel('✵-「Qurain', 'voice');
+message.guild.createChannel('✵-「Team', 'voice');
+message.guild.createChannel('✵-「Play', 'Voice');
+message.guild.createChannel('✵ AFK ✵', 'category');
+message.guild.createChannel('✵-「AFK', 'voice');
+
+  console.log(`i make text channels in this server: ** ${message.guild.name} ** `)
+  
+}
+});
+ 
+ 
+ 
+ 
+ 
+ 
+ var al7arthyCodes = ["https://f.top4top.net/p_682it2tg6.png","https://e.top4top.net/p_682a1cus5.png","https://d.top4top.net/p_682pycol4.png","https://c.top4top.net/p_682vqehy3.png","https://b.top4top.net/p_682mlf9d2.png","https://a.top4top.net/p_6827dule1.png","https://b.top4top.net/p_682g1meb10.png","https://a.top4top.net/p_682jgp4v9.png","https://f.top4top.net/p_682d4joq8.png","https://e.top4top.net/p_6828o0e47.png","https://d.top4top.net/p_6824x7sy6.png","https://c.top4top.net/p_682gzo2l5.png","https://b.top4top.net/p_68295qg04.png","https://a.top4top.net/p_682zrz6h3.png","https://f.top4top.net/p_6828vkzc2.png","https://e.top4top.net/p_682i8tb11.png"]
+var al7arthyCodes2 = ["📙__60%__  **|**  📘__40%__","📙__63%__  **|**  📘__37%__","📙__89%__  **|**  📘__11%__","📙__97%__  **|**  📘__3%__"]
+client.on('message', message => {
+    if(!message.guild) return;
+    if (message.author.bot) return;
+      let id = message.author.id,prefix="!";//البريفكس
+      if (ti[id] && (new Date).getTime() - ti[id] < 20*1000) {
+          let r = (new Date).getTime() - ti[id];
+          r = 20*1000 - r;
+      message.channel.send(` **Please wait ${pretty(r, {verbose:true})}**`).then(m => m.delete(5000));
+      return;
+      }
+      if ( message.content == prefix+'لو خيروك'){
+         
+          try{
+  //body
+  }catch(e){
+ 
+  }
+         var Embed = new Discord.RichEmbed()
+.setImage(al7arthyCodes[Math.floor(Math.random() * al7arthyCodes.length)])
+message.channel.sendEmbed(Embed).then(msg => {
+    msg.react('📘').then( r => {
+        msg.react('📙')
+ 
+        let blueFilter = (reaction, user) => reaction.emoji.name === '📘' && user.id === message.author.id;
+    let orangeFilter = (reaction, user) => reaction.emoji.name === '📙' && user.id === message.author.id;
+ 
+ 
+    let blue = msg.createReactionCollector(blueFilter, { time: 15000 });
+    let orange = msg.createReactionCollector(orangeFilter, { time: 15000 });
+ 
+ 
+    blue.on("collect", r => {
+        msg.delete();
+        message.channel.send(al7arthyCodes2[Math.floor(Math.random() * al7arthyCodes2.length)]).then(m => m.delete(60000));
+ 
+        })
+       
+ orange.on("collect", r => {
+        msg.delete();
+        message.channel.send(al7arthyCodes2[Math.floor(Math.random() * al7arthyCodes2.length)]).then(m => m.delete(60000));
+ 
+        })
+ 
+                                })
+                                })
+                              ti[id] = (new Date).getTime()
+                                }
+                                });
+ 
  
  
  
