@@ -4271,86 +4271,161 @@ client.on('message', message => {
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- client.on("message", (message) => {
-  let men = message.mentions.users.first()
- 
-  if (message.author.bot) return;
-    if (message.author.id === client.user.id) return;
-    if(!message.channel.guild) return;
-if (message.content.startsWith(prefix + 'credit')) {
-  if(men) {
-    if (!profile[men.id]) profile[men.id] = {
-    lastDaily:'Not Collected',
-    credits: 1,
-  };
-  }
-  if(men) {
-message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
-} else {
-  message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
-}
-}
- 
-if(message.content.startsWith(prefix + "daily")) {
-  if(profile[message.author.id].lastDaily != moment().format('day')) {
-    profile[message.author.id].lastDaily = moment().format('day')
-    profile[message.author.id].credits += 200
-     message.channel.send(`**${message.author.username} you collect your \`200\` :dollar: daily pounds**`)
-} else {
-    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
-}
-  }
- 
- let cont = message.content.slice(prefix.length).split(" ");
-let args = cont.slice(1);
-let sender = message.author
-if(message.content.startsWith(prefix + 'trans')) {
-          if (!args[0]) {
-            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
-         return;
-           }
-        // We should also make sure that args[0] is a number
-        if (isNaN(args[0])) {
-            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
-            return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
-             }
-            let defineduser = '';
-            let firstMentioned = message.mentions.users.first();
-            defineduser = (firstMentioned)
-            if (!defineduser) return message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
-            var mentionned = message.mentions.users.first();
-if (!profile[sender.id]) profile[sender.id] = {}
-if (!profile[sender.id].credits) profile[sender.id].credits = 200;
-fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
-if (err) console.error(err);
-})
-      var mando = message.mentions.users.id;
-      if  (!profile[defineduser.id]) profile[defineduser.id] = {}
-      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
-      profile[defineduser.id].credits += (+args[0]);
-      profile[sender.id].credits += (-args[0]);
-      let mariam = message.author.username
-message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
-}
- 
-      });
- 
- 
- 
- 
- 
- 
 
+client.on('message', message => {
+	
+	if (message.content === "!createroles") {
+		      if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.reply("**يحتاج البوت الى خاصية` MANAGE_ROLES ` **").then(msg => msg.delete(6000))
+
+	              if(!message.channel.guild) return message.reply('** This command only for servers **');
+	                         if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**أنت ليس لديك برمشن** `ADMINISTRATOR`' );
+		          const embed = new Discord.RichEmbed()
+		.setDescription('** __:ok_hand: running...to make roles | يتم الأن عمل الرتب__ **')
+		.setColor('RANDOM')
+		.setFooter("** GAMING BOT  **")
+	message.channel.sendEmbed(embed);
+		   
+
+  message.guild.createRole({
+        name : "Owner",
+        permissions :   [1],
+        color : " #000000"
+    })
+    message.guild.createRole({
+        name : "Co-Owner",
+        permissions :   [1],
+        color : " #000000"
+    })
+      message.guild.createRole({
+        name : "Leader",
+        permissions :   [1],
+        color : " #EE82EE"
+    })
+    message.guild.createRole({
+        name : "Co-Leader",
+        permissions :   [1],
+        color : " #EE82EE"
+    })
+  
+     message.guild.createRole({
+        name : "Admin",
+        permissions :   [1],
+        color : " #8A2BE2"
+    })
+    
+     message.guild.createRole({
+        name : "GAMING",
+        permissions :   [1],
+        color : " #RANDOM"
+    })
+    
+
+  
+    message.guild.createRole({
+        name : "Mod",
+        permissions :   [1],
+        color : " #8A2BE2"
+    })
+    message.guild.createRole({
+        name : "ＶＩＰ + ",
+        permissions :   [1],
+        color : "  #7CFC00"
+    })
+    message.guild.createRole({
+        name : "ＶＩＰ",
+        permissions :   [1],
+        color : " #7CFC00"
+    })
+    message.guild.createRole({
+        name : "Support ",
+        permissions :   [1],
+        color : " #FFD700"
+    })
+
+  message.guild.createRole({
+        name : "YouTuber+200",
+        permissions :   [1],
+        color : " #8B0000"
+    })
+   
+    message.guild.createRole({
+        name : "YouTuber",
+        permissions :   [1],
+        color : " #FF0000"
+    })
+    
+      message.guild.createRole({
+        name : "Pro Member☤",
+        permissions :   [1],
+        color : " #ffffff"
+    })
+    
+          message.guild.createRole({
+        name : "🌹「Friendly」",
+        permissions :   [1],
+        color : " #9932CC"
+    })
+  
+ 
+    message.guild.createRole({
+        name : "☤Member☤",
+        permissions :   [1],
+        color : " #ffffff"
+    })
+	
+	
+	    message.guild.createRole({
+        name : "Minecraft",
+        permissions :   [1],
+        color : " #ffffff"
+    })
+	
+	    message.guild.createRole({
+        name : "Fortnite",
+        permissions :   [1],
+        color : " #ffffff"
+    })
+	
+	
+	    message.guild.createRole({
+        name : "Brawlhalla",
+        permissions :   [1],
+        color : " #ffffff"
+    })
+    
+        message.guild.createRole({
+        name : "Bot",
+        permissions :   [1],
+        color : " #ffffff"
+    })
+	
+	
+	    message.guild.createRole({
+        name : "Leaqueoflegends",
+        permissions :   [1],
+        color : " #ffffff"
+    })
+    
+    message.guild.createRole({
+        name : "CrossFire",
+        permissions :   [1],
+        color : " #ffffff"
+    })     
+  
+    message.guild.createRole({
+        name : "PUBG",
+        permissions :   [1],
+        color : " #ffffff"
+    })    
+   
+     message.guild.createRole({
+        name : "BlackSquad",
+        permissions :   [1],
+        color : " #ffffff"
+    })      
+  console.log(`i make rools in this server: ** ${message.guild.name} ** `);
+}
+});
 	
 	
 	
