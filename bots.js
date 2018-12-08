@@ -4203,360 +4203,76 @@ No.on("collect", r => {
  
  
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 	if(!games[message.author.id]) games[message.author.id] = {
-		laz: 0,
-		fkk: 0,
-		fast: 0,
-		emoji: 0,
-		flag: 0,
-		math: 0,
-	};
-	
-	if(command == prefix + 'لغز') {
-		let type = require('./qlaz.json');
-		let item = type[Math.floor(Math.random() * type.length)];
-		let filter = response => {
-		return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-		};
-		var lazPoints = games[message.author.id].laz;
-		var fkkPoints = games[message.author.id].fkk;
-		var fastPoints = games[message.author.id].fast;
-		var emojiPoints = games[message.author.id].emoji;
-		var flagPoints = games[message.author.id].flag;
-		var mathPoints = games[message.author.id].math;
-		var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-		
-		if(cooldownGames.has(message.author.id)) return message.reply('**جاوب على السؤال اولا**');
-		cooldownGames.add(message.author.id);
-		
-		let qLaz = new Discord.RichEmbed()
-		.setTitle(':video_game: **[GAMES]** لديك 15 ثانيه فقط لتجيب على السؤال التالي')
-		.setDescription(`اسرع واحد يقوم بحل اللغز التالي:\n\n➥ **${item.type}**`)
-		.setThumbnail(client.user.avatarURL)
-		.setColor('GRAY')
-		.setTimestamp()
-		.setFooter(`${prefix}points :لمعرفة نقاطك قم بكتابة الامر التالي`, client.user.avatarURL)
-		
-		message.channel.send(qLaz).then(() => {
-			message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-			.then((collected) => {
-				let won = collected.first().author;
-				message.channel.send(`${collected.first().author} ✅ \`\`${allPoints + 1}\`\` لقد قمت بحل اللغز بالوقت المناسب, **مجموع نقاطك**`);
-				games[won.id].laz++;
-				cooldownGames.delete(message.author.id);
-				fs.writeFile("./games/games.json", JSON.stringify(games), (err) => {
-					if(err) console.error(err)
-				})
-			})
-			.catch(collected => {
-				message.channel.send(`:x: **لم يقم احد بحل اللغز بالوقت المناسب**`);
-				cooldownGames.delete(message.author.id);
-			})
-		})
-	}
-	if(command == prefix + 'فكك') {
-		let type = require('./qfkk.json');
-		let item = type[Math.floor(Math.random() * type.length)];
-		let filter = response => {
-		return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-		};
-		var lazPoints = games[message.author.id].laz;
-		var fkkPoints = games[message.author.id].fkk;
-		var fastPoints = games[message.author.id].fast;
-		var emojiPoints = games[message.author.id].emoji;
-		var flagPoints = games[message.author.id].flag;
-		var mathPoints = games[message.author.id].math;
-		var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-		
-		if(cooldownGames.has(message.author.id)) return message.reply('**جاوب على السؤال اولا**');
-		cooldownGames.add(message.author.id);
-		
-		let qFkk = new Discord.RichEmbed()
-		.setTitle(':video_game: **[GAMES]** لديك 15 ثانيه فقط لتجيب على السؤال التالي')
-		.setDescription(`اسرع واحد يقوم بتفكيك الجملة التالية:\n➥ **${item.type}**`)
-		.setThumbnail(client.user.avatarURL)
-		.setColor('GRAY')
-		.setTimestamp()
-		.setFooter(`${prefix}points :لمعرفة نقاطك قم بكتابة الامر التالي`, client.user.avatarURL)
-		
-		message.channel.send(qFkk).then(() => {
-			message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-			.then((collected) => {
-				let won = collected.first().author;
-				message.channel.send(`${collected.first().author} ✅ \`\`${allPoints + 1}\`\` لقد قمت بتفكيك الكلمة بالوقت المناسب، **مجموع نقاطك**`);
-				games[won.id].fkk++;
-				cooldownGames.delete(message.author.id);
-				fs.writeFile("./games/games.json", JSON.stringify(games), (err) => {
-					if(err) console.error(err)
-				})
-			})
-			.catch(collected => {
-				message.channel.send(`:x: **لم يقم احد بتفكيك الكلمة بالوقت المناسب**`);
-				cooldownGames.delete(message.author.id);
-			})
-		})
-	}
-	if(command == prefix + 'اسرع-كتابة') {
-		let type = require('./qfast.json');
-		let item = type[Math.floor(Math.random() * type.length)];
-		let filter = response => {
-		return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-		};
-		var lazPoints = games[message.author.id].laz;
-		var fkkPoints = games[message.author.id].fkk;
-		var fastPoints = games[message.author.id].fast;
-		var emojiPoints = games[message.author.id].emoji;
-		var flagPoints = games[message.author.id].flag;
-		var mathPoints = games[message.author.id].math;
-		var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-		
-		if(cooldownGames.has(message.author.id)) return message.reply('**جاوب على السؤال اولا**');
-		cooldownGames.add(message.author.id);
-		
-		let qFast = new Discord.RichEmbed()
-		.setTitle(':video_game: **[GAMES]** لديك 10 ثواني فقط لتجيب على السؤال التالي')
-		.setDescription(`اسرع واحد يكتب الجملة التالية:\n\n➥ **${item.type}**`)
-		.setThumbnail(client.user.avatarURL)
-		.setColor('GRAY')
-		.setTimestamp()
-		.setFooter(`${prefix}points :لمعرفة نقاطك قم بكتابة الامر التالي`, client.user.avatarURL)
-		
-		message.channel.send(qFast).then(() => {
-			message.channel.awaitMessages(filter, { maxMatches: 1, time: 10000, errors: ['time'] })
-			.then((collected) => {
-				let won = collected.first().author;
-				message.channel.send(`${collected.first().author} ✅ \`\`${allPoints + 1}\`\` لقد قمت بكتابة الجملة بالوقت المناسب، **مجموع نقاطك**`);
-				games[won.id].fast++;
-				cooldownGames.delete(message.author.id);
-				fs.writeFile("./games/games.json", JSON.stringify(games), (err) => {
-					if(err) console.error(err)
-				})
-			})
-			.catch(collected => {
-				message.channel.send(`:x: **لم يقم احد بكتابة الجملة بالوقت المناسب**`);
-				cooldownGames.delete(message.author.id);
-			})
-		})
-	}
-	if(command == prefix + 'ايموجي') {
-		let type = require('./qemoji.json');
-		let item = type[Math.floor(Math.random() * type.length)];
-		let filter = response => {
-		return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-		};
-		var lazPoints = games[message.author.id].laz;
-		var fkkPoints = games[message.author.id].fkk;
-		var fastPoints = games[message.author.id].fast;
-		var emojiPoints = games[message.author.id].emoji;
-		var flagPoints = games[message.author.id].flag;
-		var mathPoints = games[message.author.id].math;
-		var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-		
-		if(cooldownGames.has(message.author.id)) return message.reply('**جاوب على السؤال اولا**');
-		cooldownGames.add(message.author.id);
-		
-		let qEmoji = new Discord.RichEmbed()
-		.setTitle(':video_game: **[GAMES]** لديك 15 ثانيه فقط لتجيب على السؤال التالي')
-		.setDescription(`اسرع واحد يقوم بكتابة اسم الايموجي التالي:`)
-		.setImage(item.type)
-		.setThumbnail(client.user.avatarURL)
-		.setColor('GRAY')
-		.setTimestamp()
-		.setFooter(`${prefix}points :لمعرفة نقاطك قم بكتابة الامر التالي`, client.user.avatarURL)
-		
-		message.channel.send(qEmoji).then(() => {
-			message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-			.then((collected) => {
-				let won = collected.first().author;
-				message.channel.send(`${collected.first().author} ✅ \`\`${allPoints + 1}\`\` لقد قمت بكتابة اسم الايموجي بالوقت المناسب، **مجموع نقاطك**`);
-				games[won.id].emoji++;
-				cooldownGames.delete(message.author.id);
-				fs.writeFile("./games/games.json", JSON.stringify(games), (err) => {
-					if(err) console.error(err)
-				})
-			})
-			.catch(collected => {
-				message.channel.send(`:x: **لم يقم احد بكتابة اسم الايموجي بالوقت المناسب**`);
-				cooldownGames.delete(message.author.id);
-			})
-		})
-	}
-	if(command == prefix + 'علم') {
-		let type = require('./qflag.json');
-		let item = type[Math.floor(Math.random() * type.length)];
-		let filter = response => {
-		return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-		};
-		var lazPoints = games[message.author.id].laz;
-		var fkkPoints = games[message.author.id].fkk;
-		var fastPoints = games[message.author.id].fast;
-		var emojiPoints = games[message.author.id].emoji;
-		var flagPoints = games[message.author.id].flag;
-		var mathPoints = games[message.author.id].math;
-		var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-		
-		if(cooldownGames.has(message.author.id)) return message.reply('**جاوب على السؤال اولا**');
-		cooldownGames.add(message.author.id);
-		
-		let qFlag = new Discord.RichEmbed()
-		.setTitle(':video_game: **[GAMES]** لديك 15 ثانيه فقط لتجيب على السؤال التالي')
-		.setDescription(`اسرع واحد يقوم بكتابة اسم العلم التالي:`)
-		.setImage(item.type)
-		.setThumbnail(client.user.avatarURL)
-		.setColor('GRAY')
-		.setTimestamp()
-		.setFooter(`${prefix}points :لمعرفة نقاطك قم بكتابة الامر التالي`, client.user.avatarURL)
-		
-		message.channel.send(qFlag).then(() => {
-			message.channel.awaitMessages(filter, { maxMatches: 1, time: 15000, errors: ['time'] })
-			.then((collected) => {
-				let won = collected.first().author;
-				message.channel.send(`${collected.first().author} ✅ \`\`${allPoints + 1}\`\` لقد قمت بكتابة اسم العلم بالوقت المناسب، **مجموع نقاطك**`);
-				games[won.id].flag++;
-				cooldownGames.delete(message.author.id);
-				fs.writeFile("./games/games.json", JSON.stringify(games), (err) => {
-					if(err) console.error(err)
-				})
-			})
-			.catch(collected => {
-				message.channel.send(`:x: **لم يقم احد بكتابة اسم العلم بالوقت المناسب**`);
-				cooldownGames.delete(message.author.id);
-			})
-		})
-	}
-	if(command == prefix + 'رياضيات') {
-		let type = require('./qmath.json');
-		let item = type[Math.floor(Math.random() * type.length)];
-		let filter = response => {
-		return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
-		};
-		var lazPoints = games[message.author.id].laz;
-		var fkkPoints = games[message.author.id].fkk;
-		var fastPoints = games[message.author.id].fast;
-		var emojiPoints = games[message.author.id].emoji;
-		var flagPoints = games[message.author.id].flag;
-		var mathPoints = games[message.author.id].math;
-		var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-		
-		if(cooldownGames.has(message.author.id)) return message.reply('**جاوب على السؤال اولا**');
-		cooldownGames.add(message.author.id);
-		
-		let qMath = new Discord.RichEmbed()
-		.setTitle(':video_game: **[GAMES]** لديك 10 ثواني فقط لتجيب على السؤال التالي')
-		.setDescription(`اسرع واحد يحسب المعادلة التالية:\n\n➥ **${item.type}**`)
-		.setThumbnail(client.user.avatarURL)
-		.setColor('GRAY')
-		.setTimestamp()
-		.setFooter(`${prefix}points :لمعرفة نقاطك قم بكتابة الامر التالي`, client.user.avatarURL)
-		
-		message.channel.send(qMath).then(() => {
-			message.channel.awaitMessages(filter, { maxMatches: 1, time: 10000, errors: ['time'] })
-			.then((collected) => {
-				let won = collected.first().author;
-				message.channel.send(`${collected.first().author} ✅ \`\`${allPoints + 1}\`\` **لقد قمت بحساب المعادلة بشكل صحيح بالوقت المناسب، مجموع نقاطك**`);
-				games[won.id].math++;
-				cooldownGames.delete(message.author.id);
-				fs.writeFile("./games/games.json", JSON.stringify(games), (err) => {
-					if(err) console.error(err)
-				})
-			})
-			.catch(collected => {
-				message.channel.send(`:x: **لم يقم احد بحساب المعادلة في الوقت المناسب**`);
-				cooldownGames.delete(message.author.id);
-			})
-		})
-	}
-	if(command == prefix + 'points') {
-		if(!games[message.author.id]) games[message.author.id] = {
-			laz: 0,
-			fkk: 0,
-			fast: 0,
-			emoji: 0,
-			flag: 0,
-			math: 0,
-		};
-		
-		if(args1 == '') {
-			var lazPoints = games[message.author.id].laz;
-			var fkkPoints = games[message.author.id].fkk;
-			var fastPoints = games[message.author.id].fast;
-			var emojiPoints = games[message.author.id].emoji;
-			var flagPoints = games[message.author.id].flag;
-			var mathPoints = games[message.author.id].math;
-			var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-			var playerName = message.author.tag;
-			var playerAvatar = message.author.avatarURL;
-		}else {
-			if(!games[muf.id]) games[muf.id] = {
-				laz: 0,
-				fkk: 0,
-				fast: 0,
-				emoji: 0,
-				flag: 0,
-				math: 0,
-			};
-			
-			var lazPoints = games[muf.id].laz;
-			var fkkPoints = games[muf.id].fkk;
-			var fastPoints = games[muf.id].fast;
-			var emojiPoints = games[muf.id].emoji;
-			var flagPoints = games[muf.id].flag;
-			var mathPoints = games[muf.id].math;
-			var allPoints = lazPoints + fkkPoints + fastPoints + emojiPoints + flagPoints + mathPoints;
-			var playerName = muf.tag;
-			var playerAvatar = muf.avatarURL;
-		}
-		
-		let pointsPlayer = new Discord.RichEmbed()
-		.setTitle(':video_game: **[GAMES]** نقاط الالعاب')
-		.setThumbnail(client.user.avatarURL)
-		.setColor('GRAY')
-		.setDescription(`**\n:heavy_plus_sign: [ مجموع النقاط [ ${allPoints}\n**`)
-		.addField('**نقاط لعبة الالغاز:**', `➥ [ **${lazPoints}** ]`, true)
-		.addField('**نقاط لعبة فكك:**', `➥ [ **${fkkPoints}** ]`, true)
-		.addField('**نقاط لعبة اسرع كتابة:**', `➥ [ **${fastPoints}** ]`, true)
-		.addField('**نقاط لعبة الايموجي:**', `➥ [ **${emojiPoints}** ]`, true)
-		.addField('**نقاط لعبة الاعلام:**', `➥ [ **${flagPoints}** ]`, true)
-		.addField('**نقاط لعبة الرياضيات:**', `➥ [ **${mathPoints}** ]`, true)
-		.setTimestamp()
-		.setFooter(playerName, playerAvatar)
-		
-		message.channel.send(pointsPlayer);
-		
-		fs.writeFile("./games.json", JSON.stringify(games), (err) => {
-			if(err) console.error(err)
-		});
-	};
-});
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ client.on('message', MEGA => { 
+  var sender = MEGA.author
+  if(!MEGA.guild) return
+  if(!sw[MEGA.guild.id]) sw[MEGA.guild.id] = {
+  onoff: 'Off',
+  ch:    'Welcome',
+  msk:   'Welcome'
+}
+        if(MEGA.content.startsWith(prefix + `setwelcomer`)) {        
+        let perms = MEGA.member.hasPermission(`MANAGE_CHANNELS`)
+        if(!perms) return MEGA.channel.send('**You need `Manage Channels` permission**')
+        let args = MEGA.content.split(" ").slice(1)
+        if(!args.join(" ")) return MEGA.reply(`
+  ** ${prefix}set-wlc toggle **
+  ** ${prefix}set-wlc set [Channel Name] **
+  ** ${prefix}set-wlc msg [Welcome MEGA] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
+        let state = args[0]
+        if(!state.trim().toLowerCase() == 'toggle' || !state.trim().toLowerCase() == 'set' || !state.trim().toLowerCase() == 'msg' ) return MEGA.reply(`
+ ** ${prefix}set-wlc toggle **
+ ** ${prefix}set-wlc set [Channel Name] **
+ ** ${prefix}set-wlc msg [Welcome MEGA] **`) // ->set-wlc toggle - ->set-wlc set - ->set-wlc msg
+        if(state.trim().toLowerCase() == 'toggle') { 
+        if(sw[MEGA.guild.id].onoff === 'Off') return [MEGA.channel.send(`**Welcome MEGA Is **on** !**`), sw[MEGA.guild.id].onoff = 'On']
+        if(sw[MEGA.guild.id].onoff === 'On')  return [MEGA.channel.send(`**Welcome MEGA Is **off** !**`), sw[MEGA.guild.id].onoff = 'Off']
+}
+        if(state.trim().toLowerCase() == 'set') {
+        let newch = MEGA.content.split(" ").slice(2).join(" ")
+        if(!newch) return MEGA.reply(`${prefix}set-wlc set [Channel name]`)
+        if(!MEGA.guild.channels.find(`name`,newch)) return MEGA.reply(`**I Cant Find This Channel.**`)
+            sw[MEGA.guild.id].ch = newch
+            MEGA.channel.send(`**Welcome channel Has Been Changed to ${newch}.**`)
+} 
+        if(state.trim().toLowerCase() == 'msg') {
+        let newmsg = MEGA.content.split(" ").slice(2).join(" ")
+        if(!newmsg) return MEGA.reply(`${prefix}set-wlc msg [New MEGA]`)
+            sw[MEGA.guild.id].msk = newmsg
+            MEGA.channel.send(`**Welcome MEGA Has Been Changed to ${newmsg}.**`)
+} 
+}
+        if(MEGA.content === prefix + 'set-wlc info') {
+        let perms = MEGA.member.hasPermission(`MANAGE_GUILD`) 
+        if(!perms) return MEGA.reply(`You don't have permissions.`)
+        var embed = new Discord.RichEmbed()
+        .addField(`Welcome MEGA  `, `
+On/Off  : __${sw[MEGA.guild.id].onoff}__
+Channel : __${sw[MEGA.guild.id].ch}__
+MEGA : __${sw[MEGA.guild.id].msk}__`)
+        .setColor(`BLUE`)
+            MEGA.channel.send({embed})
+}
+        fs.writeFile("./setwlc.json", JSON.stringify(sw), (err) => {
+        if (err) console.error(err)
+});
+})
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 	
 	
 	
