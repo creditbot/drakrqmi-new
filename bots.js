@@ -2139,7 +2139,7 @@ suggestchannel.send("@everyone  `||` @here ");
             .setColor('RED')
             .setFooter(`==== Gòǒd Luck ♦=====`, 'https://cdn.pg.sa/GeQGucQhBR.gif')
         
-        var channel =member.guild.channels.find('name', 'welcome')
+        var channel =member.guild.channels.find('name', 'chat')
         if (!channel) return;
         channel.send({embed : embed});
         })
@@ -2478,7 +2478,7 @@ client.on('guildMemberAdd', member => {
     const ei = invites[member.guild.id];
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const yumz = member.guild.channels.find("name", "welcome");
+    const yumz = member.guild.channels.find("name", "chat");
      yumz.send(`<@${member.user.id}> تم دعوته بواسطة <@${inviter.id}>`);
    //  yumz.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
   }); 
@@ -2770,7 +2770,7 @@ const adkar = [
   var client= new Discord.RichEmbed()
   .setTitle("**اذكار**")
   .setThumbnail(message.author.avatarURL)
-	.setFooter(`Rqmi , System`, 'https://images-ext-1.discordapp.net/external/DkLK0TXEAxoHpwBflZFbCPC0Zi92Xrmc0DvARomutb0/https/cdn.discordapp.com/icons/492335623504396289/152527c92f9fdd6ea38d3a6094d2e0f3.jpg')
+	.setFooter(`Rqmi , System`, 'https://cdn.discordapp.com/avatars/520504846906818560/bef8cf0dbffc8007953c2d889790a947.png?size=256')
   .setColor('RANDOM')
   .setDescription(`${adkar[Math.floor(Math.random() * adkar.length)]}`)
 				 .setTimestamp()
@@ -3811,7 +3811,7 @@ client.on("message", message => {
     
                         if (message.content.startsWith(prefix + "new")) {
         const reason = message.content.split(" ").slice(1).join(" ");
-        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`This server doesn't have a \`Support Team\` role made, so the ticket won't be opened.\nIf you are an administrator, make one with that name exactly and give it to users that should be able to see tickets.`);
+        if (!message.guild.roles.exists("name", "Support Team")) return message.channel.send(`هذا السيرفر ليس لدية \`Support Team\` وبالتالي ، لن يتم فتح التذكرة. \ إذا كنت مسؤولاً ، فافتح اسمًا بهذا الاسم بالضبط وقدمه للمستخدمين الذين يمكنهم مشاهدة التذاكر.`);
         if (message.guild.channels.exists("name", "ticket-" + message.author.id)) return message.channel.send(`You already have a ticket open.`);
         message.guild.createChannel(`ticket-${message.author.id}`, "text").then(c => {
             let role = message.guild.roles.find("name", "Support Team");
@@ -4080,6 +4080,86 @@ message.channel.sendFile(canvas.toBuffer())
 }
 
 })
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', message => {
+         if (message.content === "!createserver") {
+		       if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**يحتاج البوت الى خاصية` MANAGE_CHANNELS ` **").then(msg => msg.delete(6000))
+
+                       if(!message.channel.guild) return message.reply('** This command only for servers **');
+	                         if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**أنت ليس لديك برمشن** `ADMINISTRATOR`' );
+	const embed = new Discord.RichEmbed()
+		.setDescription('** __:ok_hand: running...to make Channels | يتم الأن عمل الرومات الصويتة والكتابية__ **')
+		.setColor('RANDOM')
+		.setFooter("**Rqmi , System **")
+	message.channel.sendEmbed(embed);
+
+message.guild.createChannel('Info', 'text');
+message.guild.createChannel('Chat', 'text');
+message.guild.createChannel('bot', 'text');
+message.guild.createChannel('bo7', 'text');
+message.guild.createChannel('pic', 'text');
+message.guild.createChannel('cut', 'text');
+message.guild.createChannel('log', 'text');
+message.guild.createChannel('admin-chat', 'text');
+message.guild.createChannel('•-discord-js', 'text');
+message.guild.createChannel('•طلب', 'text');
+message.guild.createChannel('•-التقديمات', 'text');
+message.guild.createChannel('•-القبول-الرفض', 'text');
+message.guild.createChannel('▓▬▬▬ADMNS▬▬▬▓', 'voice');
+message.guild.createChannel('Owner - مالك السيرفر', 'voice');
+message.guild.createChannel('Co Owner - نائب الرئيس', 'voice');
+message.guild.createChannel('Dev - مبرمج السيرفر', 'voice');
+message.guild.createChannel('Admin - مشرف', 'voice');
+message.guild.createChannel('Mod - مود', 'voice');
+message.guild.createChannel('▓▬▬▬Other▬▬▬▓', 'voice');
+message.guild.createChannel('[ R E C ] 🎥', 'voice');
+message.guild.createChannel('YouTubers - يوتيوبرز', 'voice');
+message.guild.createChannel('VIP + - كبار الشخصيات بلس', 'voice');
+message.guild.createChannel('VIP - كبار الشخصيات', 'voice');
+message.guild.createChannel('Friends - اصدقاء', 'voice');
+message.guild.createChannel('▓▬▬▬WEL▬▬▬▓', 'voice');
+message.guild.createChannel('Help - مساعدة', 'voice');
+message.guild.createChannel('Ξ〖 اقـتـراحـاتـكمـ 💡 〗', 'voice');
+message.guild.createChannel('▓▬▬▬♚▬▬▬▓', 'voice');
+message.guild.createChannel('♧ Ξ〖 🎤  سواليف 📣  〗', 'voice');
+message.guild.createChannel('♢ Ξ〖 🎤 مواهب 🎵  〗', 'voice');
+message.guild.createChannel('❋ Ξ〖 🎈فعاليات 🏅 〗', 'voice');
+message.guild.createChannel('❋ Ξ〖  🕋 القرآن الكريم  〗', 'voice');
+message.guild.createChannel('▓▬▬▬♛▬▬▬▓', 'voice');
+message.guild.createChannel('☆  Ξ〖 🔞  السجن العام 🔪 〗', 'voice');
+message.guild.createChannel('▓▬▬▬Games▬▬▬▓', 'voice');
+message.guild.createChannel('Clash of Clans | كلاش أوف كلانز', 'voice');
+message.guild.createChannel('Clash Royal | كلاش رويال', 'voice');
+message.guild.createChannel('Hajwala  Online | هجولة أون لاين', 'voice');
+message.guild.createChannel('Bullet force | بولت فورس', 'voice');
+message.guild.createChannel('MTA | ام تي اي', 'voice');
+message.guild.createChannel('Ludo Star | لودو ستار', 'voice');
+message.guild.createChannel('▓▬▬▬Private▬▬▬▓', 'voice');
+message.guild.createChannel('✿Tow✿', 'voice');
+message.guild.createChannel('✿Three✿', 'voice');
+message.guild.createChannel('✿Four✿', 'voice');
+message.guild.createChannel('✿Five✿', 'voice');
+message.guild.createChannel('✿Six✿', 'voice');
+message.guild.createChannel('▓▬▬▬AFK▬▬▬▓', 'voice');
+message.guild.createChannel('Away From keyboard AFK', 'voice');
+message.guild.createChannel('▓▬▬▬♚▬▬▬▓', 'voice');
+
+  console.log(`i make text channels in this server: ** ${message.guild.name} ** `)
+  
+}
+});
+
+
 
 
 
