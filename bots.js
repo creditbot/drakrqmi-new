@@ -4082,54 +4082,6 @@ message.channel.sendFile(canvas.toBuffer())
 })
 
 
-
-
-
-
-
-
-
-
-
-client.on('message', message => {
-         if (message.content === "!createserver") {
-		       if(!message.guild.member(client.user).hasPermission("MANAGE_CHANNELS")) return message.reply("**يحتاج البوت الى خاصية` MANAGE_CHANNELS ` **").then(msg => msg.delete(6000))
-
-                       if(!message.channel.guild) return message.reply('** This command only for servers **');
-	                         if(!message.member.hasPermission('ADMINISTRATOR')) return      message.channel.send('**أنت ليس لديك برمشن** `ADMINISTRATOR`' );
-	const embed = new Discord.RichEmbed()
-		.setDescription('** __:ok_hand: running...to make Channels | يتم الأن عمل الرومات الصويتة والكتابية__ **')
-		.setColor('RANDOM')
-		.setFooter("**Rqmi , System **")
-	message.channel.sendEmbed(embed);
-
-message.guild.createChannel('✵-「Info', 'text');
-message.guild.createChannel('✵-「Chat', 'text');
-message.guild.createChannel('✵-「bot', 'text');
-message.guild.createChannel('✵-「bo7', 'text');
-message.guild.createChannel('✵-「pic', 'text');
-message.guild.createChannel('✵-「cut', 'text');
-message.guild.createChannel('✵-「log', 'text');
-message.guild.createChannel('✵-「admin-chat', 'text');
-message.guild.createChannel('✵-「discord-js', 'text');
-message.guild.createChannel('✵-「طلب', 'text');
-message.guild.createChannel('✵-「التقديمات', 'text');
-message.guild.createChannel('✵-「القبول-الرفض', 'text');
-message.guild.createChannel('✵-「GiveAway', 'text');
-message.guild.createChannel('✵-「اقتراحات', 'text');
-  console.log(`i make text channels in this server: ** ${message.guild.name} ** `)
-  
-}
-});
-
-
-
-
-
-
-
- 
- 
  
  
 client.login(process.env.BOT_TOKEN)
