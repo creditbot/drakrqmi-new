@@ -1490,7 +1490,7 @@ client.on("message", (message) => {
         color: 0x06DF00,
         description: "تم مسح الرسائل بنجاح",
         footer: {
-          text: "Histoire. - System"
+          text: "Our - System"
         }
       }}).then(msg => {msg.delete(3000)});
                           }
@@ -1812,31 +1812,31 @@ client.on('message',async message => {
            if (message.content === prefix + "date") {
            if (!message.channel.guild) return message.reply('** This command only for servers **');  
            var currentTime = new Date(),
-              hHistoire.s = currentTime.getHHistoire.s() + 4 ,
-              hHistoire.s2 = currentTime.getHHistoire.s() + 3 ,
-              hHistoire.s3 = currentTime.getHHistoire.s() + 2 ,
-              hHistoire.s4 = currentTime.getHHistoire.s() + 3 ,
+              hours = currentTime.getHours() + 4 ,
+              hours2 = currentTime.getHours() + 3 ,
+              hours3 = currentTime.getHours() + 2 ,
+              hours4 = currentTime.getHours() + 3 ,
               minutes = currentTime.getMinutes(),
               seconds = currentTime.getSeconds(),
               Year = currentTime.getFullYear(),
               Month = currentTime.getMonth() + 1,
               Day = currentTime.getDate();
-               var h = hHistoire.s
-    if(hHistoire.s > 12) {
-                 hHistoire.s -= 12;
-              } else if(hHistoire.s == 0) {
-                  hHistoire.s = "12";
+               var h = hours
+    if(hours > 12) {
+                 hours -= 12;
+              } else if(hours == 0) {
+                  hours = "12";
               }  
-               if(hHistoire.s2 > 12) {
-                 hHistoire.s2 -= 12;
-              } else if(hHistoire.s2 == 0) {
-                  hHistoire.s2 = "12";
+               if(hours2 > 12) {
+                 hours2 -= 12;
+              } else if(hours2 == 0) {
+                  hours2 = "12";
                
               }  
-  if(hHistoire.s3 > 12) {
-                 hHistoire.s3 -= 12;
-              } else if(hHistoire.s3 == 0) {
-                  hHistoire.s3 = "12";
+  if(hours3 > 12) {
+                 hours3 -= 12;
+              } else if(hours3 == 0) {
+                  hours3 = "12";
               } 
               if (minutes < 10) {
                   minutes = '0' + minutes;
@@ -1844,12 +1844,12 @@ client.on('message',async message => {
    
    
               var suffix = 'صباحاَ';
-              if (hHistoire.s >= 12) {
+              if (hours >= 12) {
                   suffix = 'مساء';
-                  hHistoire.s = hHistoire.s - 12;
+                  hours = hours - 12;
               }
-              if (hHistoire.s == 0) {
-                  hHistoire.s = 12;
+              if (hours == 0) {
+                  hours = 12;
               }
     
    
@@ -1859,11 +1859,11 @@ client.on('message',async message => {
                   .setColor('RANDOM')
                   .setFooter(message.author.username, message.author.avatarURL)
                   .addField('الامارات',
-                  "「"+ hHistoire.s + ":" + minutes +":"+ seconds + "」")
+                  "「"+ hours + ":" + minutes +":"+ seconds + "」")
                    .addField('مكه المكرمه',
-                  "「"+ hHistoire.s2 + ":" + minutes +":"+ seconds  + "」") 
+                  "「"+ hours2 + ":" + minutes +":"+ seconds  + "」") 
                   .addField('مصر',
-                  "「"+ hHistoire.s3 + ":" + minutes +":"+ seconds  + "」") 
+                  "「"+ hours3 + ":" + minutes +":"+ seconds  + "」") 
                    
                   .addField('Date',
                   "「"+ Day + "-" + Month + "-" + Year +  "」")
@@ -2340,7 +2340,7 @@ if(message.content === '!voice') {
           .addField('❖-|!رياضيات🎮', `لعبة الرياضيات🎮`)
 		  .addField('❖-|!رياضيات🎮', `لعبة الزواج🎮`)
   message.author.send({embed});
-      message.channel.send(":white_check_mark: | Check YHistoire. DM تم الأرسال بلخاص")
+      message.channel.send(":white_check_mark: | Check Your DM تم الأرسال بلخاص")
  }
 });
 
@@ -2358,7 +2358,7 @@ if(message.content === '!voice') {
           .addField('❖-|!queue', `🎸لمعرفة قآئمة التشغيل🎤`)
           .addField('❖-|!music', `🔰لأرسال الأوامر بلشات🔰`)
   message.author.send({embed});
-      message.channel.send(":white_check_mark: | Check YHistoire. DM تم الأرسال بلخاص")
+      message.channel.send(":white_check_mark: | Check Your DM تم الأرسال بلخاص")
 
  }
 });
@@ -3343,7 +3343,7 @@ client.on("message", message => {
 		message.channel.send(`تم تفعيلك بنجاح`);
         message.member.addRole(message.guild.roles.find(c => c.name == "Verified")); // اسم الرتبة
       }).catch(() => {
-        m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yHistoire.self.`).then(m2 => m.delete(15000));
+        m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
       });
     });
   }
