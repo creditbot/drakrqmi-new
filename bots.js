@@ -3784,7 +3784,7 @@ client.on("message", message => {
  client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find(ch => ch.name === 'chat');
   if (!channel) return;
-  channel.send(` ̲  ̲***W̲e̲l̲c̲o̲m̲e  , ${member} ̲t̲o  ̲Server Rqmi,System  :two_hearts: 🎉♥:sparkles:*** `);
+  channel.send(` ̲  ̲***W̲e̲l̲c̲o̲m̲e  , ${member} ̲t̲o  ̲The Server  :two_hearts: 🎉♥:sparkles:*** `);
 });
 
 client.on('message', message => {
