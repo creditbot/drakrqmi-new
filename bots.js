@@ -1633,7 +1633,7 @@ const Love = [  "**احبك / عدد قطرات المـــطر والشجر و
 });
 
 client.on("guildMemberAdd", member => {
-let welcomer = member.guild.channels.find("name","welcome");
+let welcomer = member.guild.channels.find("name","✵-「chat");
       if(!welcomer) return;
       if(welcomer) {
          moment.locale('ar-ly');
@@ -2139,7 +2139,7 @@ suggestchannel.send("@everyone  `||` @here ");
             .setColor('RED')
             .setFooter(`==== Gòǒd Luck ♦=====`, 'https://cdn.pg.sa/GeQGucQhBR.gif')
         
-        var channel =member.guild.channels.find('name', 'chat')
+        var channel =member.guild.channels.find('name', '✵-「chat')
         if (!channel) return;
         channel.send({embed : embed});
         })
@@ -2191,7 +2191,7 @@ ms.delete()
         setTimeout(() => {
   b.edit(`**تم التقديم وسيتم الرد فـ اقرب وقت:white_check_mark:**`)
         },2000);
-var gg = message.guild.channels.find('name','طلب')
+var gg = message.guild.channels.find('name','✵-「طلب')
 if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
@@ -2478,7 +2478,7 @@ client.on('guildMemberAdd', member => {
     const ei = invites[member.guild.id];
     const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
     const inviter = client.users.get(invite.inviter.id);
-    const yumz = member.guild.channels.find("name", "chat");
+    const yumz = member.guild.channels.find("name", "✵-「chat");
      yumz.send(`<@${member.user.id}> تم دعوته بواسطة <@${inviter.id}>`);
    //  yumz.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
   }); 
@@ -3094,7 +3094,7 @@ member.guild.fetchInvites().then(guildInvites => {
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "javas")) {
   if(!message.channel.guild) return message.reply('This Command For Servers Only !');
-    let jscodes = message.guild.channels.find(`name`, "•-discord-js");
+    let jscodes = message.guild.channels.find(`name`, "✵-「discord-js");
     if(!jscodes) return message.channel.send(":x:لم اجد الروم الخاص بنشر الاكواد");
       let filter = m => m.author.id === message.author.id;
       let thisMessage;
@@ -3184,7 +3184,7 @@ ${thisMessage}\`\`\`
             if(message.content.startsWith("!تقديم")) {
         if(!message.channel.guild) return;
                 if(message.author.bot) return;
-        let channel = message.guild.channels.find("name", "التقديمات")
+        let channel = message.guild.channels.find("name", "✵-「التقديمات")
             if(!channel) return message.reply("**لانشاء روم التقديمات !!setsubmissions من فضلك اكتب الامر**")
             if(channel) {
             message.channel.send( message.member + ', **:timer:**').then( (m) =>{
@@ -3262,7 +3262,7 @@ ${thisMessage}\`\`\`
             if(!message.channel.guild) return;
                 if(message.author.bot) return;
                 if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
-                message.guild.createChannel("التقديمات", "text").then(c =>{
+                message.guild.createChannel("✵-「التقديمات", "text").then(c =>{
                     c.overwritePermissions(message.guild.id, {
                         SEND_MESSAGES: false
  
@@ -3276,7 +3276,7 @@ ${thisMessage}\`\`\`
   let role = message.content.split(" ").slice(2).join(" ");
   let mySupport = message.guild.roles.find('name',role);
   if(message.content.startsWith("!قبول")) {
-    let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
+    let acRoom = message.guild.channels.find('name', '✵-「القبول-الرفض');
     if(!acRoom) return message.reply("!!setac من فضلك انشاء روم **القبول-ال��فض** او اكتب الامر");
     if(acRoom) {
     if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
@@ -3295,7 +3295,7 @@ client.on('message',async message => {
   let mention = message.mentions.members.first();
   if(message.content.startsWith("!رفض")) {
   if(!message.channel.guild) return;
-  let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
+  let acRoom = message.guild.channels.find('name', '✵-「القبول-الرفض');
   if(!acRoom) return message.reply("!!setac من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
   if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
   if(!mention) return message.reply("منشن شخص");
@@ -3308,7 +3308,7 @@ client.on('message',async message => {
          if(!message.channel.guild) return;
                 if(message.author.bot) return;
                 if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
-                message.guild.createChannel("القبول-الرفض", "text").then(c =>{
+                message.guild.createChannel("✵-「القبول-الرفض", "text").then(c =>{
                     c.overwritePermissions(message.guild.id, {
                         SEND_MESSAGES: false
  
@@ -3477,7 +3477,7 @@ client.on('message', msg => {
       .then(audit => {
         let exec = audit.entries.map(a => a.executor.username)
         try {
-           let log = role.guild.channels.find('name', 'log');
+           let log = role.guild.channels.find('name', '✵-「log');
           if (!log) return;
           let embed = new Discord.RichEmbed()
             .setColor('RANDOM')
@@ -3504,7 +3504,7 @@ client.on('message', msg => {
       .then(audit => {
         let exec = audit.entries.map(a => a.executor.username)
         try {
-           let log = role.guild.channels.find('name', 'log');
+           let log = role.guild.channels.find('name', '✵-「log');
           if (!log) return;
           let embed = new Discord.RichEmbed()
             .setColor('RANDOM')            
@@ -3532,7 +3532,7 @@ client.on('message', msg => {
           let exec = audit.entries.map(a => a.executor.username)
           try {
   
-            let log = re.guild.channels.find('name', 'log');
+            let log = re.guild.channels.find('name', '✵-「log');
             if (!log) return;
             let embed = new Discord.RichEmbed()
               .setColor('BLACK')
@@ -3552,7 +3552,7 @@ client.on('message', msg => {
     }, 1000)
   })
  client.on("channelDelete",  dc => {
-  const channel = dc.guild.channels.find("name", "log")
+  const channel = dc.guild.channels.find("name", "✵-「log")
   if(channel) {
   var embed = new Discord.RichEmbed()
   .setTitle(dc.guild.name)
@@ -3567,7 +3567,7 @@ client.on('message', msg => {
 client.on('messageUpdate', (message, newMessage) => {
     if (message.content === newMessage.content) return;
     if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-    const channel = message.guild.channels.find('name', 'log');
+    const channel = message.guild.channels.find('name', '✵-「log');
     if (!channel) return;
      let embed = new Discord.RichEmbed()
        .setAuthor(`${message.author.tag}`, message.author.avatarURL)
@@ -3579,7 +3579,7 @@ client.on('messageUpdate', (message, newMessage) => {
  });
  client.on('messageDelete', message => {
     if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
-    const channel = message.guild.channels.find('name', 'log');
+    const channel = message.guild.channels.find('name', '✵-「log');
     if (!channel) return;
     
     let embed = new Discord.RichEmbed()
@@ -3594,7 +3594,7 @@ client.on('messageUpdate', (message, newMessage) => {
     if (!member || !member.id || !member.guild) return;
     const guild = member.guild;
 	
-    const channel = member.guild.channels.find('name', 'log');
+    const channel = member.guild.channels.find('name', '✵-「log');
     if (!channel) return;
     let memberavatar = member.user.avatarURL
     const fromNow = moment(member.user.createdTimestamp).fromNow();
@@ -3612,7 +3612,7 @@ client.on('messageUpdate', (message, newMessage) => {
     if (!member || !member.id || !member.guild) return;
     const guild = member.guild;
 	
-    const channel = member.guild.channels.find('name', 'log');
+    const channel = member.guild.channels.find('name', '✵-「log');
     if (!channel) return;
     let memberavatar = member.user.avatarURL
     const fromNow = moment(member.joinedTimestamp).fromNow();
@@ -3630,7 +3630,7 @@ client.on('messageUpdate', (message, newMessage) => {
   let m2 = newM.serverMute;
    let d1 = oldM.serverDeaf;
   let d2 = newM.serverDeaf;
-   let ch = oldM.guild.channels.find('name', 'log')
+   let ch = oldM.guild.channels.find('name', '✵-「log')
   if(!ch) return;
      oldM.guild.fetchAuditLogs()
     .then(logs => {
@@ -3677,7 +3677,7 @@ client.on('messageUpdate', (message, newMessage) => {
       .then(audit => {
         let exec = audit.entries.map(a => a.executor.username);
         try {
-          let log = guild.channels.find('name', 'log');
+          let log = guild.channels.find('name', '✵-「log');
           if (!log) return;
           client.fetchUser(member.id).then(myUser => {
           let embed = new Discord.RichEmbed()
@@ -4103,57 +4103,20 @@ client.on('message', message => {
 		.setFooter("**Rqmi , System **")
 	message.channel.sendEmbed(embed);
 
-message.guild.createChannel('Info', 'text');
-message.guild.createChannel('Chat', 'text');
-message.guild.createChannel('bot', 'text');
-message.guild.createChannel('bo7', 'text');
-message.guild.createChannel('pic', 'text');
-message.guild.createChannel('cut', 'text');
-message.guild.createChannel('log', 'text');
-message.guild.createChannel('admin-chat', 'text');
-message.guild.createChannel('•-discord-js', 'text');
-message.guild.createChannel('•طلب', 'text');
-message.guild.createChannel('•-التقديمات', 'text');
-message.guild.createChannel('•-القبول-الرفض', 'text');
-message.guild.createChannel('▓▬▬▬ADMNS▬▬▬▓', 'voice');
-message.guild.createChannel('Owner - مالك السيرفر', 'voice');
-message.guild.createChannel('Co Owner - نائب الرئيس', 'voice');
-message.guild.createChannel('Dev - مبرمج السيرفر', 'voice');
-message.guild.createChannel('Admin - مشرف', 'voice');
-message.guild.createChannel('Mod - مود', 'voice');
-message.guild.createChannel('▓▬▬▬Other▬▬▬▓', 'voice');
-message.guild.createChannel('[ R E C ] 🎥', 'voice');
-message.guild.createChannel('YouTubers - يوتيوبرز', 'voice');
-message.guild.createChannel('VIP + - كبار الشخصيات بلس', 'voice');
-message.guild.createChannel('VIP - كبار الشخصيات', 'voice');
-message.guild.createChannel('Friends - اصدقاء', 'voice');
-message.guild.createChannel('▓▬▬▬WEL▬▬▬▓', 'voice');
-message.guild.createChannel('Help - مساعدة', 'voice');
-message.guild.createChannel('Ξ〖 اقـتـراحـاتـكمـ 💡 〗', 'voice');
-message.guild.createChannel('▓▬▬▬♚▬▬▬▓', 'voice');
-message.guild.createChannel('♧ Ξ〖 🎤  سواليف 📣  〗', 'voice');
-message.guild.createChannel('♢ Ξ〖 🎤 مواهب 🎵  〗', 'voice');
-message.guild.createChannel('❋ Ξ〖 🎈فعاليات 🏅 〗', 'voice');
-message.guild.createChannel('❋ Ξ〖  🕋 القرآن الكريم  〗', 'voice');
-message.guild.createChannel('▓▬▬▬♛▬▬▬▓', 'voice');
-message.guild.createChannel('☆  Ξ〖 🔞  السجن العام 🔪 〗', 'voice');
-message.guild.createChannel('▓▬▬▬Games▬▬▬▓', 'voice');
-message.guild.createChannel('Clash of Clans | كلاش أوف كلانز', 'voice');
-message.guild.createChannel('Clash Royal | كلاش رويال', 'voice');
-message.guild.createChannel('Hajwala  Online | هجولة أون لاين', 'voice');
-message.guild.createChannel('Bullet force | بولت فورس', 'voice');
-message.guild.createChannel('MTA | ام تي اي', 'voice');
-message.guild.createChannel('Ludo Star | لودو ستار', 'voice');
-message.guild.createChannel('▓▬▬▬Private▬▬▬▓', 'voice');
-message.guild.createChannel('✿Tow✿', 'voice');
-message.guild.createChannel('✿Three✿', 'voice');
-message.guild.createChannel('✿Four✿', 'voice');
-message.guild.createChannel('✿Five✿', 'voice');
-message.guild.createChannel('✿Six✿', 'voice');
-message.guild.createChannel('▓▬▬▬AFK▬▬▬▓', 'voice');
-message.guild.createChannel('Away From keyboard AFK', 'voice');
-message.guild.createChannel('▓▬▬▬♚▬▬▬▓', 'voice');
-
+message.guild.createChannel('✵-「Info', 'text');
+message.guild.createChannel('✵-「Chat', 'text');
+message.guild.createChannel('✵-「bot', 'text');
+message.guild.createChannel('✵-「bo7', 'text');
+message.guild.createChannel('✵-「pic', 'text');
+message.guild.createChannel('✵-「cut', 'text');
+message.guild.createChannel('✵-「log', 'text');
+message.guild.createChannel('✵-「admin-chat', 'text');
+message.guild.createChannel('✵-「discord-js', 'text');
+message.guild.createChannel('✵-「طلب', 'text');
+message.guild.createChannel('✵-「التقديمات', 'text');
+message.guild.createChannel('✵-「القبول-الرفض', 'text');
+message.guild.createChannel('✵-「GiveAway', 'text');
+message.guild.createChannel('✵-「اقتراحات', 'text');
   console.log(`i make text channels in this server: ** ${message.guild.name} ** `)
   
 }
