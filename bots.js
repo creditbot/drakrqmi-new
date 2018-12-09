@@ -3074,23 +3074,7 @@ member.guild.fetchInvites().then(guildInvites => {
       
       }
       });
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-	
-	
-	
- 
 client.on('message',async message => {
     if(message.content.startsWith(prefix + "javas")) {
   if(!message.channel.guild) return message.reply('This Command For Servers Only !');
@@ -3167,18 +3151,6 @@ ${thisMessage}\`\`\`
 }
 );
       })}})
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	client.on("message", message => {
             if(message.content.startsWith("!تقديم")) {
@@ -3318,9 +3290,6 @@ client.on('message',async message => {
             }
 })
 	
-	
-	
-	
 	client.on('message', message => {
   if (!message.content.startsWith(prefix)) return;
   const verifed = ["417232164845781012"];
@@ -3333,8 +3302,6 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
 }
 });
 	
-
-	
 	client.on("message", (message) => {
     if(message.content.startsWith(prefix+"gmail")) {
         message.channel.send(JSON.stringify({
@@ -3343,7 +3310,6 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
         }))
     }
 })
-
 
 client.on("message", (message) => {
     if(message.content.startsWith(prefix+"hotmail")) {
@@ -3354,9 +3320,6 @@ client.on("message", (message) => {
     }
 })
 	
-	
-	
-	
 	client.on('message', message=> {
     if (message.author.bot) return;
     if (message.isMentioned(client.user))
@@ -3364,7 +3327,6 @@ client.on("message", (message) => {
     message.reply(" كيف اقدر اساعدك!!");
     }
 });
-
 
 client.on("message", message => {
   if(message.content.startsWith("!verify")) { 
@@ -3386,15 +3348,7 @@ client.on("message", message => {
     });
   }
 });
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	client.on('message', message => {
  
     if (message.content === "!bot") {
@@ -3416,9 +3370,6 @@ var day = message.guild.createdAt.getDate()
  
 });
 
-
-
-
 client.on('message', function(msg) {
   if(msg.content.startsWith (prefix  + 'server')) {
     let embed = new Discord.RichEmbed()
@@ -3438,11 +3389,6 @@ client.on('message', function(msg) {
   }
 });
 
-
-
-
-
-
 client.on("message", message => {
  if (message.content === "!inv") {
   const embed = new Discord.RichEmbed()
@@ -3454,20 +3400,12 @@ client.on("message", message => {
  }
 });
 
-
-
-
-
 client.on('message', msg => {
   if (msg.content === '!inv') {
     msg.reply('شيك عالخاص :white_check_mark:');
   }
 });
 
-
- 
- 
- 
    client.on("roleCreate", role => {
   client.setTimeout(() => {
     role.guild.fetchAuditLogs({
@@ -3563,7 +3501,6 @@ client.on('message', msg => {
   }
   });
    
-  
 client.on('messageUpdate', (message, newMessage) => {
     if (message.content === newMessage.content) return;
     if (!message || !message.id || !message.content || !message.guild || message.author.bot) return;
@@ -3698,20 +3635,6 @@ client.on('messageUpdate', (message, newMessage) => {
   }, 1000);
 });
 
- 
- 
- 
- 
-
- 
- 
-	
-	
-	
-	
-	
-	
-	
 	client.on('message', message => {
 	var command = message.content.toLowerCase().split(" ")[0];
     if(command == prefix + 'sug') {
@@ -3770,8 +3693,6 @@ No.on("collect", r => {
 	}
 });
  
-
- 
  //جاكيو لفل 
 let points = JSON.parse(fs.readFileSync("./points.json", "utf8"));
 
@@ -3805,8 +3726,6 @@ client.on("message", message => {
 });
 //طبعا لتنضيف الشات يمسح كل ديقيقة الرسالة 
  
- 
-
        client.on("message", (message) => {
     
                         if (message.content.startsWith(prefix + "new")) {
@@ -3862,31 +3781,11 @@ client.on("message", message => {
 
 });
 
-
  client.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find(ch => ch.name === 'welcome');
   if (!channel) return;
   channel.send(` ̲  ̲***W̲e̲l̲c̲o̲m̲e  , ${member} ̲t̲o  ̲Server Rqmi,System  :two_hearts: 🎉♥:sparkles:*** `);
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 client.on('message', message => {
     
@@ -4082,6 +3981,5 @@ message.channel.sendFile(canvas.toBuffer())
 })
 
 
- 
  
 client.login(process.env.BOT_TOKEN)
