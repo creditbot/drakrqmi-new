@@ -41,7 +41,7 @@ client.on('ready', () => {
 
 
 client.on('ready', () => {                           
-client.user.setGame(`Rqmi - System By Drak`,'https://www.twitch.tv/fofodiscord');                                                                                                                                                                                                                                                                                                                                                                                                                            
+client.user.setGame(`Histoire. - System By Drak`,'https://www.twitch.tv/fofodiscord');                                                                                                                                                                                                                                                                                                                                                                                                                            
 });
 
 
@@ -686,7 +686,7 @@ const cuttweet = [     'كت تويت ‏| تخيّل لو أنك سترسم ش�
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL) 
- .addField('Rqmi - System ©' ,
+ .addField('Histoire. - System ©' ,
   `${cuttweet[Math.floor(Math.random() * cuttweet.length)]}`)
   message.channel.sendEmbed(embed);
   console.log('[id] Send By: ' + message.author.username)
@@ -941,7 +941,7 @@ client.on('message', message => {
 var embed = new Discord.RichEmbed()
 .setColor('RANDOM')
  .setThumbnail(message.author.avatarURL) 
-.addField('Rqmi - System ©' ,
+.addField('Histoire. - System ©' ,
 `${Za7f[Math.floor(Math.random() * Za7f.length)]}`)
 message.channel.sendEmbed(embed);
 console.log('[38ab] Send By: ' + message.author.username)
@@ -1045,7 +1045,7 @@ client.on('message', async msg => { // eslint-disable-line
 			        .setDescription(`**الرجآء من حضرتك إختيآر رقم المقطع** :
 ${videos.map(video2 => `[**${++index} **] \`${video2.title}\``).join('\n')}`)
 //by ,$ ReBeL ء , ??#4777 'CODES SERVER'
-					.setFooter("Rqmi - System ©")
+					.setFooter("Histoire. - System ©")
 					msg.channel.sendEmbed(embed1).then(message =>{message.delete(20000)})
 					
 					// eslint-disable-next-line max-depth
@@ -1625,7 +1625,7 @@ const Love = [  "**احبك / عدد قطرات المـــطر والشجر و
   var embed = new Discord.RichEmbed()
   .setColor('RANDOM')
    .setThumbnail(message.author.avatarURL)
- .addField('Rqmi - System ©' ,
+ .addField('Histoire. - System ©' ,
   `${Love[Math.floor(Math.random() * Love.length)]}`)
   message.channel.sendEmbed(embed);
   console.log('[id] Send By: ' + message.author.username)
@@ -2196,7 +2196,7 @@ if(!gg) return;
 if(gg) {
 gg.send({embed : new Discord.RichEmbed()
 .setDescription(`**ماذا تريد:scroll: » \n ${lan}\nكم تدفع :moneybag: » \n ${md} \n من الذي تشتري منه :round_pushpin: » \n ${br}  \n تم التقديم بوسطة :top: » <@${message.author.id}> **`)  
-          .setFooter(`Rqmi , System`)
+          .setFooter(`Histoire. , System`)
 .setTimestamp()
 });
 }        
@@ -2583,7 +2583,7 @@ message.channel.send(image)
         .addField("📜 اسم السيرفر",`${args}`,true)
         .addField("🌐 بورت السيرفر",`${port}`)
         .setImage(`http://status.mclive.eu/${args}/${args}/25565/banner.png`)
-        .setFooter(`Rqmi , System`)
+        .setFooter(`Histoire. , System`)
                 .setTimestamp()
     message.channel.send(embed)      
 }})
@@ -2770,7 +2770,7 @@ const adkar = [
   var client= new Discord.RichEmbed()
   .setTitle("**اذكار**")
   .setThumbnail(message.author.avatarURL)
-	.setFooter(`Rqmi , System`, 'https://cdn.discordapp.com/avatars/520504846906818560/bef8cf0dbffc8007953c2d889790a947.png?size=256')
+	.setFooter(`Histoire. , System`, 'https://cdn.discordapp.com/avatars/520504846906818560/bef8cf0dbffc8007953c2d889790a947.png?size=256')
   .setColor('RANDOM')
   .setDescription(`${adkar[Math.floor(Math.random() * adkar.length)]}`)
 				 .setTimestamp()
@@ -3393,8 +3393,8 @@ client.on("message", message => {
  if (message.content === "!inv") {
   const embed = new Discord.RichEmbed()
       .setColor("RANDOM")
-      .setFooter('Rqmi Bot')
-      .addField('Rqmi Bot', `https://discordapp.com/oauth2/authorize?client_id=520504846906818560&permissions=537159744&scope=bot`)
+      .setFooter('Histoire. Bot')
+      .addField('Histoire. Bot', `https://discordapp.com/oauth2/authorize?client_id=520504846906818560&permissions=537159744&scope=bot`)
   message.author.send({embed});
 
  }
