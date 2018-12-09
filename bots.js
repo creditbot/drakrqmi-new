@@ -1477,24 +1477,6 @@ client.on("message", (message) => {
     }
 })
 
-	client.on("message", message => {
-            var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith("!clear")) {
-   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('? | **ليس لديك صلاحيات**');
-        var msg;
-        msg = parseInt();
-      
-      message.channel.fetchMessages({limit: msg}).then(messages => message.channel.bulkDelete(messages)).catch(console.error);
-      message.channel.sendMessage("", {embed: {
-        title: "Done | تــم",
-        color: 0x06DF00,
-        description: "تم مسح الرسائل بنجاح",
-        footer: {
-          text: "Our - System"
-        }
-      }}).then(msg => {msg.delete(3000)});
-                          }
-});
 var cats = [
 
 "https://static.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg",
@@ -1670,41 +1652,12 @@ let welcomer = member.guild.channels.find("name","chat");
 
 
 
-client.on('message',async message => {
-  if(message.author.bot || message.channel.type === '!bc') return;
-  let args = message.content.split(' ');
-  if(args[0] === `!bc`) {
-    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('- **أنت لا تملك الصلاحيات اللازمة لأستخدام هذا الأمر**');
-    if(!args[1]) return message.channel.send('- **يجب عليك كتابة الرسالة بعد الأمر**');
- 
-    let msgCount = 0;
-    let errorCount = 0;
-    let successCount = 0;
-    message.channel.send(`**- [ :bookmark: :: ${msgCount} ] ?عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ?عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]?عدد الرسائل الغير مستلمة**`).then(msg => {
-      message.guild.members.forEach(g => {
-        g.send(args.slice(1).join(' ')).then(() => {
-          successCount++;
-          msgCount++;
-          msg.edit(`**- [ :bookmark: :: ${msgCount} ] ?عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ?عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]?عدد الرسائل الغير مستلمة**`);
-        }).catch(e => {
-          errorCount++;
-          msgCount++;
-          msg.edit(`**- [ :bookmark: :: ${msgCount} ] ?عدد الرسائل المرسلة**\n**- [ :inbox_tray: :: ${successCount} ] ?عدد الرسائل المستلمة**\n**- [ :outbox_tray: :: ${errorCount} ]?عدد الرسائل الغير مستلمة**`);
-        });
-      });
-    });
-  }
-});
 
 
 
 	
 	
 	
-
-
-
-
 
 
 
@@ -3979,6 +3932,174 @@ message.channel.sendFile(canvas.toBuffer())
 }
 
 })
+
+
+
+client.on("ready", () => {
+  function lol() {
+    client.guilds.get('442919008715669505').roles.find("name", "• | Founders.").setColor("RANDOM");
+  };
+  setInterval(lol, 1600);
+});
+
+
+
+
+  const args = message.content.split(' ');
+  const credits = require('./credits.json');
+  const path = './credits.json';
+  const mention = message.mentions.users.first() || hero.users.get(args[1]) || message.author;
+  const mentionn = message.mentions.users.first() || hero.users.get(args[1]);
+  const author = message.author.id;
+  const balance = args[2];
+  const daily = Math.floor(Math.random() * 350) + 10;
+ 
+  if(!credits[author]) credits[author] = {credits: 50};
+  if(!credits[mention.id]) credits[mention.id] = {credits: 50};
+  fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+ 
+ 
+  if(message.content.startsWith(prefix + "credit")) {
+  if(args[0] !== `${prefix}credit` && args[0] !== `${prefix}credits`) return;
+ 
+  if(args[2]) {
+    if(isNaN(args[2])) return message.channel.send('**:heavy_multiplication_x:| هذه الخانة يجب ان تتكون من ارقام وليس احرف.**');
+    if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]} لم يتم العثور على**`);
+    if(mention.id === message.author.id) return message.channel.send('**:heavy_multiplication_x:| لا يمكنك تحويل كردت لنفسك**');
+    if(credits[author].credits < balance) return message.channel.send('**:heavy_multiplication_x:| أنت لا تملك هذا القدر من الكردت**');
+    var one = Math.floor(Math.random() * 9) + 1;
+    var two = Math.floor(Math.random() * 9) + 1;
+    var three = Math.floor(Math.random() * 9) + 1;
+    var four = Math.floor(Math.random() * 9) + 1;
+ 
+    var number = `${one}${two}${three}${four}`;
+   
+    message.channel.send(`**:heavy_dollar_sign:| \`${number}\`, أكتب الرقم للأستمرار**`).then(m => {
+      message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1, time: 10000}).then(c => {
+        if(c.first().content === number) {
+          m.delete();
+          message.channel.send(`**:atm:| ${message.author.username}, قام بتحويل \`${balance}\` لـ ${mention}**`);
+          credits[author].credits += (-balance);
+          credits[mention.id].credits += (+balance);
+          fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+        } else if(c.first().content !== number) {
+          m.delete();
+          message.channel.send(`** :money_with_wings: | تم الغاء الإرسال**`);
+        }
+      });
+    });
+  }
+  if(!args[2]) {
+    if(mention.bot) return message.channel.send(`**:heavy_multiplication_x:| ${message.content.split(' ')[1]} لم يتم العثور على**`);
+    message.channel.send(`**:credit_card: | ${mention.username}, معك من الكردت **${credits[mention.id].credits}`);
+  }
+ 
+  }
+  if(message.content.startsWith(prefix + "daily")) {
+    if(cool.includes(message.author.id)) return message.channel.send(`**:heavy_dollar_sign: | \`${moment().startOf('day').locale('ar-eg').fromNow().replace('منذ', 'بعد')}\` , يجب عليك انتظار  يوم لأخذ المبلغ مرة اخرى**`);
+    if(mentionn) {
+      var one = Math.floor(Math.random() * 9) + 1;
+      var two = Math.floor(Math.random() * 9) + 1;
+      var three = Math.floor(Math.random() * 9) + 1;
+      var four = Math.floor(Math.random() * 9) + 1;
+ 
+      var number = `${one}${two}${three}${four}`;
+ 
+      message.channel.send(`**:atm: | \`${number}\`, قم بكتابة الرقم للأستمرار**`).then(async m => {
+        message.channel.awaitMessages(msg => msg.author.id === message.author.id, {max: 1, time: 20000, errors: ['time']}).then(collected => {
+          if(collected.first().content === number) {
+            m.delete();
+            collected.first().delete();
+            credits[mentionn.id].credits += (+daily);
+            fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+ 
+          message.channel.send(`**:atm: | \`${daily}\`, تم تسليم المبلغ**`);  
+          }
+          if(collected.first().content !== number) {
+            return m.delete();
+          }
+        });
+      });
+    } else if(!mentionn) {
+      credits[author].credits += (+daily);
+      fs.writeFile(path, JSON.stringify(credits, null, 5), function(err) {if(err) console.log(err)});
+ 
+      message.channel.send(`**:atm: | \`${daily}\`, تم اعطائك المبلغ**`);
+    }
+    cool.unshift(message.author.id);
+ 
+    setTimeout(() => {
+      cool.shift(message.author.id);
+      message.author.send("**:atm: | \`Daily\`, يمكنك الحصول على الكردت المجانية الان**").catch();
+    }, ms("1d"));
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+client.on('message', msg => {
+	var prefix = "!";
+  if (msg.author.bot) return;
+  if (!msg.content.startsWith(prefix)) return;
+  let command = msg.content.split(" ")[0];
+  command = command.slice(prefix.length);
+  let args = msg.content.split(" ").slice(1);
+
+    if(command === "clear") {
+        const emoji = client.emojis.find("name", "log")
+    let textxt = args.slice(0).join("");
+    if(msg.member.hasPermission("MANAGE_MESSAGES")) {
+    if (textxt == "") {
+        msg.delete().then
+    msg.channel.send("***```ضع عدد الرسائل التي تريد مسحها 👌```***").then(m => m.delete(3000));
+} else {
+    msg.delete().then
+    msg.delete().then
+    msg.channel.bulkDelete(textxt);
+        msg.channel.send("```php\nعدد الرسائل التي تم مسحها: " + textxt + "\n```").then(m => m.delete(3000));
+        }    
+    }
+}
+});
+
+
+
+client.on('message', message => {
+   let embed = new Discord.RichEmbed()
+
+    let args = message.content.split(' ').slice(1).join(' ');
+     if(!message.channel.guild) return;
+if(message.content.split(' ')[0] == '!bc') {
+         message.react("✔️")
+          let embed = new Discord.RichEmbed()
+    .setColor("#FF00FF")
+    .setThumbnail(message.author.avatarURL)   
+                                      .addField('تم الارسال بواسطة :', "<@" + message.author.id + ">")
+                 message.channel.sendEmbed(embed);
+        message.guild.members.forEach(m => {
+            var bc = new Discord.RichEmbed()
+.addField('**● Sender  :**', `*** → ${message.author.username}#${message.author.discriminator}***`)
+            .addField('***● Server  :***', `*** → ${message.guild.name}***`)               
+    .setColor('#ff0000')
+                 .addField('ّ', args)
+            m.send(``,{embed: bc});
+        });
+    }
+})
+
+
+
+
+
 
 
  
