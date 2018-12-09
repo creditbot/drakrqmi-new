@@ -3413,35 +3413,6 @@ client.on('message', msg => {
       })
   }, 1000)
 })
-   client.on("roleUpdate", (re,updated) => {
-    client.setTimeout(() => {
-      re.guild.fetchAuditLogs({
-          limit: 1,
-          type: 30
-        })
-        .then(audit => {
-          let exec = audit.entries.map(a => a.executor.username)
-          try {
-  
-            let log = re.guild.channels.find('name', 'log');
-            if (!log) return;
-            let embed = new Discord.RichEmbed()
-              .setColor('BLACK')
-              .setTitle("✏  تعديل اسم رتبة")
-              .addField("قبل",`${re.name}`,true)
-              .addField("بعد",`${updated.name}`,true )
-              .addField("ايدي الرتبة",`${re.id}`,true )
-              .addField('من قبل', exec, true)
-              .setTimestamp()
-            log.send(embed).catch(e => {
-              console.log(e);
-            });
-          } catch (e) {
-            console.log(e);
-          }
-        })
-    }, 1000)
-  })
  client.on("channelDelete",  dc => {
   const channel = dc.guild.channels.find("name", "log")
   if(channel) {
