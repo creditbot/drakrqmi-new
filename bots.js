@@ -3908,6 +3908,16 @@ message.channel.sendFile(canvas.toBuffer())
 
 client.on("ready", () => {
   function lol() {
+    client.guilds.get('442919008715669505').roles.find("name", "•| One.").setColor("RANDOM");
+  };
+  setInterval(lol, 1600);
+});
+
+
+
+
+client.on("ready", () => {
+  function lol() {
     client.guilds.get('442919008715669505').roles.find("name", "• | Founders.").setColor("RANDOM");
   };
   setInterval(lol, 1600);
