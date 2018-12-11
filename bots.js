@@ -3650,7 +3650,7 @@ client.channels.find('name', 'log').send({ embed: embed });
         var iiMo = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setTimestamp()
-        .setTitle('``هي ولد دراك لحق لحق جاتني راسالة جديده في الخاص !``')
+        .setTitle('``هي ولد دراك لحق جاتني راسالة جديده في الخاص !``')
         .setThumbnail(`${message.author.avatarURL}`)
         .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
         .setFooter(`From **${message.author.tag} (${message.author.id})**`)
@@ -3660,32 +3660,394 @@ client.channels.find('name', 'log').send({ embed: embed });
 
 
 
+client.on('message',async message => {
+  if(message.content === '!unbanall') {
+    var user = message.mentions.users.first();
+    if(!message.member.hasPermission('ADMINISTRATOR')) return message.channel.send('❌|**\`ADMINISTRATOR\`لا توجد لديك صلاحية `**');
+    if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
+    const guild = message.guild;
+
+  message.guild.fetchBans().then(ba => {
+  ba.forEach(ns => {
+  message.guild.unban(ns);
+  const embed= new Discord.RichEmbed()
+        .setColor("RANDOM")
+        .setAuthor("Succes!", "https://images-ext-1.discordapp.net/external/vp2vj9m0ieU5J6SHg6ObIsGpTJyoZnGAebrd0_vi848/https/i.imgur.com/GnR2unD.png?width=455&height=455")
+        .setDescription(`**:white_check_mark: Has Been Unban For All**`)
+    .setFooter('Requested by '+message.author.username, message.author.avatarURL)
+  message.channel.sendEmbed(embed);
+  guild.owner.send(`سيرفر : ${guild.name}
+  **تم فك الباند عن الجميع بواسطة** : <@${message.author.id}>`) 
+  });
+  });
+  }
+  });
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    client.on('message', message => {
+    if (message.content.startsWith("!tr")) {
+
+        const translate = require('google-translate-api');
+        const Discord = require('discord.js');
+
+    let toTrans = message.content.split(' ').slice(1);
+    let language;
+
+    language = toTrans[toTrans.length - 2] === 'to' ? toTrans.slice(toTrans.length - 2, toTrans.length)[1].trim() : undefined;
+    if (!language) {
+        return message.reply(`**من فضلك قم باستخدام . \`$tr [الكلمه] to [اللغه]\`**`);
+    }
+    let finalToTrans = toTrans.slice(toTrans.length - toTrans.length, toTrans.length - 2).join(' ');
+    translate(finalToTrans, {to: language}).then(res => {
+            message.channel.send({embed: {
+                color: 3447003,
+                author: {
+                  name: 'Cozmo translate',
+                  icon_url: client.user.avatarURL
+                },
+                fields: [{
+                    name: "تم الترجمه",
+                    value: `**من:** ${res.from.language.iso}\n\`\`\`${finalToTrans}\`\`\`\n**الي: **${language}\n\`\`\`${res.text}\`\`\``
+                  }
+                ],
+                timestamp: new Date(),
+                footer: {
+                  icon_url: client.user.avatarURL,
+                  text: "SLFSTR Bot"
+                }
+              }
+            });
+    }).catch(err => {
+        message.channel.send({
+            embed: {
+                description: '❌  لم استطيع العثور علي اللغة المطلوبه',
+                color: 0xE8642B
+            }
+        });
+    });
+    }
+});
 
 
 
-      client.on("message", message => {
-        let args = message.content.split(" ").slice(1);
-      if (message.content.startsWith('!report')) {
-            let user = message.mentions.users.first();
-            let reason = args.slice(1).join(' ');
-            let modlog = client.channels.find('name', 'report');
-            if (!reason) return message.reply('**ضع سبباً مقنعاً**');
-              if (message.mentions.users.size < 1) return message.reply('**يجب عليك منشن للعضو المراد الابلاغ عليه**').catch(console.error);
-       
-        if (!modlog) return message.reply('**لا يوجد روم بأسم report**');
-        const embed = new Discord.RichEmbed()
-          .setColor(0x00AE86)
-          .setTimestamp()
-          .addField('نوع الرسالة:', 'Report')
-          .addField('المراد الابلاغ عليه:', `${user.username}#${user.discriminator} (${user.id}`)
-          .addField('صاحب الابلاغ:', `${message.author.username}#${message.author.discriminator}`)
-          .addField('السبب', reason);
-          message.delete()
-          return client.channels.get(modlog.id).sendEmbed(embed).catch(console.error);
-      }
+
+
+
+
+const reply = JSON.parse(fs.readFileSync('./replys.json' , 'utf8'));
+client.on('message', async message => {
+    let messageArray = message.content.split(" ");
+   if(message.content.startsWith(prefix + "setReply")) {
+    let filter = m => m.author.id === message.author.id;
+    let thisMessage;
+    let thisFalse;
+
+    if(!message.member.hasPermission("MANAGE_GUILD")) return message.channel.send('You don\'t have permission').then(msg => {
+       msg.delete(4500);
+       message.delete(4500);
+    });
+    
+    message.channel.send(':pencil: **| من فضلك اكتب الرساله الان... :pencil2: **').then(msg => {
+
+        message.channel.awaitMessages(filter, {
+          max: 1,
+          time: 90000,
+          errors: ['time']
+        })
+        .then(collected => {
+            collected.first().delete();
+            thisMessage = collected.first().content;
+            let boi;
+            msg.edit(':scroll: **| من فضلك اكتب الرد الان... :pencil2: **').then(msg => {
+      
+                message.channel.awaitMessages(filter, {
+                  max: 1,
+                  time: 90000,
+                  errors: ['time']
+                })
+                .then(collected => {
+                    collected.first().delete();
+                    boi = collected.first().content;
+                    msg.edit('✅ **| تم الاعداد بنجاح...  **').then(msg => {
+        
+                      message.channel.awaitMessages(filter, {
+                        max: 1,
+                        time: 90000,
+                        errors: ['time']
+                      })
+                      let embed = new Discord.RichEmbed()
+                      .setTitle('**Done The Autoreply Code Has Been Setup**')
+                      .addField('Message:', `${thisMessage}`)
+                      .addField('Reply:', `${boi}`)
+                      .setThumbnail(message.author.avatarURL)
+                      .setFooter(`${client.user.username}`)
+                     message.channel.sendEmbed(embed)
+    reply[message.guild.id] = {
+        msg: thisMessage,
+        reply: boi,
+    }
+    fs.writeFile("./replys.json", JSON.stringify(reply), (err) => {
+    if (err) console.error(err)
+  })
+   } 
+            )
+        })
+    })
+})
+    })
+}})             
+client.on('message', async message => {
+   if(message.content === reply[message.guild.id].msg) {
+       message.channel.send(reply[message.guild.id].reply)
+   }}
+)
+
+
+
+
+client.on('message', message => {
+  if(message.content === 'g!vote') {
+  const embed = new Discord.RichEmbed()
+  .setTitle('Vote For Quran Bot')
+  .setURL('https://discordbots.org/bot/472952619623645184')
+  .setFooter('Quran Bot')
+  .setColor('RANDOM')
+  message.channel.send({embed: embed});
+  }
+});
+
+
+
+
+
+
+
+client.on('message', message => {
+    if(message.content.startsWith("g!google")) {
+        if(!message.channel.guild) return message.reply('** This command only for servers **');
+   		const args = message.content.split(' ').slice(1);
+				let query = args;
+				message.channel.send({embed: {
+					color: 3447003,
+					title: "Your Search",
+					url: `https://www.google.com/search?q=${query}`,
+					description: "Look at your Search Query via Google.",
+					timestamp: new Date(),
+					footer: {
+						icon_url: client.user.avatarURL,
+						text: "GAMING BOT  by Google"
+					},
+				}});
+				
+    }
+});
+
+
+
+
+client.on('message',async message => {
+    if(message.content.startsWith(prefix + "setCount")) {
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('❌ **ليس معي الصلاحيات ال��افية**');
+    message.channel.send('✅| **تم عمل الروم بنجاح**');
+    message.guild.createChannel(`Members Count : [ ${message.guild.members.size} ]` , 'voice').then(c => {
+      console.log(`Count Members channel setup for guild: \n ${message.guild.name}`);
+      c.overwritePermissions(message.guild.id, {
+        CONNECT: false,
+        SPEAK: false
       });
+      setInterval(function() {
+        c.setName(`Members Count :  ${message.guild.members.size} `)
+      },1000);
+    });
+    }
+  });
+  
+  
+  
+  
+  
+  
+  client.on('message' , async message => {
+            if(message.content.startsWith(prefix + "auto")) {
+     await message.channel.send("`ارسال الرساله .`").then(e => {
+    let filter = m => m.author.id === message.author.id
+    let tests = '';
+    let time = '';
+    let channel = '';
+    let chaTests = message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+    .then(collected => {
+      tests = collected.first().content
+      collected.first().delete()
+e.edit("`تكرار الرساله كل ....... دقائق`")
+let chaTime = message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+.then(co => {
+if(isNaN(co.first().content)) return message.reply("`الوقت بالدقائق ! ارقام فقطٍ`");
+if(co.first().content > 1500 || co.first().content < 1) return message.channel.send("`لا اقل من دقيقه ولا اكثر من يوم`")
+  time = co.first().content
+co.first().delete()
+  e.edit("`ادخل اسم الروم`")
+  let chaChannel = message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+.then(col => {
+  channel = col.first().content
+col.first().delete()
+  e.edit("`جاري اعداد المعلومات الرجاء الانتظاار...`").then(b => {
+              setTimeout(() => {
+    b.edit(`** تم اعداد المعلومات بنجاح .**`)
+        },2000);
+  })
+  var room = message.guild.channels.find('name' , channel)
+  if(!room) return;
+  if (room) {
+setInterval(() => {
+room.send(tests);
+}, time*60000)
+  }
+})
+})
+})
+        
+})
+}
+});
 
 
+
+
+
+client.on('message', message => {
+ 
+    if(message.content.startsWith(prefix + 'rep')) {
+      if(!message.channel.guild) return;
+                    moment.locale('en');
+                  var getvalueof = message.mentions.users.first()
+                    if(!getvalueof) return message.channel.send(`**:mag: |  ${message.author.username}, the user could not be found.    **`);
+                       if(getvalueof.id == message.author.id) return message.channel.send(`**${message.author.username}, you cant give yourself a reputation !**`)
+    if(profile[message.author.id].reps != moment().format('L')) {
+            profile[message.author.id].reps = moment().format('L');
+            profile[getvalueof.id].rep = Math.floor(profile[getvalueof.id].rep+1);
+         message.channel.send(`** :up:  |  ${message.author.username} has given ${getvalueof} a reputation point!**`)
+        } else {
+         message.channel.send(`**:stopwatch: |  ${message.author.username}, you can raward more reputation  ${moment().endOf('day').fromNow()} **`)
+        }
+       }
+       fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+});
+ 
+client.on("message", (message) => {
+  let men = message.mentions.users.first()
+ 
+  if (message.author.bot) return;
+    if (message.author.id === client.user.id) return;
+    if(!message.channel.guild) return;
+if (message.content.startsWith(prefix + 'credit')) {
+  if(men) {
+    if (!profile[men.id]) profile[men.id] = {
+    lastDaily:'Not Collected',
+    credits: 1,
+  };
+  }
+  if(men) {
+message.channel.send(`** ${men.username}, :credit_card: balance` + " is `" + `${profile[men.id].credits}$` + "`.**")
+} else {
+  message.channel.send(`** ${message.author.username}, your :credit_card: balance` + " is `" + `${profile[message.author.id].credits}$` + "`.**")
+}
+}
+ 
+if(message.content.startsWith(prefix + "daily")) {
+  if(profile[message.author.id].lastDaily != moment().format('day')) {
+    profile[message.author.id].lastDaily = moment().format('day')
+    profile[message.author.id].credits += 200
+     message.channel.send(`**${message.author.username} you collect your \`200\` :dollar: daily pounds**`)
+} else {
+    message.channel.send(`**:stopwatch: | ${message.author.username}, your daily :yen: credits refreshes ${moment().endOf('day').fromNow()}**`)
+}
+  }
+ 
+ let cont = message.content.slice(prefix.length).split(" ");
+let args = cont.slice(1);
+let sender = message.author
+if(message.content.startsWith(prefix + 'trRans')) {
+          if (!args[0]) {
+            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+         return;
+           }
+        // We should also make sure that args[0] is a number
+        if (isNaN(args[0])) {
+            message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            return; // Remember to return if you are sending an error message! So the rest of the code doesn't run.
+             }
+            let defineduser = '';
+            let firstMentioned = message.mentions.users.first();
+            defineduser = (firstMentioned)
+            if (!defineduser) return message.channel.send(`**Usage: ${prefix}trans @someone amount**`);
+            var mentionned = message.mentions.users.first();
+if (!profile[sender.id]) profile[sender.id] = {}
+if (!profile[sender.id].credits) profile[sender.id].credits = 200;
+fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+      var mando = message.mentions.users.id;
+      if  (!profile[defineduser.id]) profile[defineduser.id] = {}
+      if (!profile[defineduser.id].credits) profile[defineduser.id].credits = 200;
+      profile[defineduser.id].credits += (+args[0]);
+      profile[sender.id].credits += (-args[0]);
+      let mariam = message.author.username
+message.channel.send(`**:moneybag: | ${message.author.username}, has transferrerd ` + "`" + args[0] + "$` to " + `<@${defineduser.id}>**`)
+}
+ 
+      });
+ 
+      client.on('message', message => {
+          if(!profile[message.author.id]) profile[message.author.id] ={
+              points: 0,
+              level: 1
+          };
+          if(message.author.bot) return;
+          profile[message.author.id].points = Math.floor(profile[message.author.id].points+1);
+          if(profile[message.author.id].points > 100) {
+              profile[message.author.id].points = 0
+              profile[message.author.id].level = Math.floor(profile[message.author.id].level+1);
+              message.channel.send(`**${message.author.username}, You leveld up to __${profile[message.author.id].level}__**`)
+          }
+          fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+      })
+ 
+    client.on('message', message => {
+        let tit = message.content.split(" ").slice(1).join(" ");
+        if(message.content.startsWith(prefix + "title")) {
+        if(!profile[message.author.id].tite) profile[message.author.id].tite = "Hey im using Super"
+        if(!tit) {
+            message.channel.send("**Usage: <title <something>**");
+        } else {
+            profile[message.author.id].tite = tit
+            message.channel.send(`:ok:`)
+        }
+        }
+        fs.writeFile('profile.json', JSON.stringify(profile), (err) => {
+if (err) console.error(err);
+})
+    })
+	
+	
+	
+	
+	
+	
+	
 
 
 
