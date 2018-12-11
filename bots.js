@@ -9,6 +9,7 @@ const googl = require('goo.gl');
 const translate = require('google-translate-api');   
 const fs = require("fs"); 
 const canvas = require("canvas");
+var Canvas = require('canvas')
 const getYoutubeID = require('get-youtube-id'); 
 const moment = require("moment");  
 const { Client, Util } = require('discord.js');  
