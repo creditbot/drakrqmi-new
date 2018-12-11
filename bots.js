@@ -3804,7 +3804,7 @@ client.on('message',async message => {
         var args = message.content.split(" ").slice(1);
     if(message.content.startsWith(prefix + 'anime')) {
          var anime = new Discord.RichEmbed()
-.setImage(cats[Math.floor(Math.random() * cats.length)])
+.setImage(animes[Math.floor(Math.random() * animes.length)])
 message.channel.sendEmbed(anime);
     }
 });
@@ -4357,8 +4357,6 @@ if (message.content.startsWith("!profile")) {
           
       }
   const w = ['./PicsArt_08-28-06.21.07.png'];
-       var Canvas = require('canvas')
-var jimp = require('jimp')
 if (!games[getvalueof.id]) games[getvalueof.id] = {wins: 0,loses: 0,points: 0,total: 0,credits: 100,level: 1,};          
             let Image = Canvas.Image,
             canvas = new Canvas(300, 300),
