@@ -3844,7 +3844,7 @@ if (!points[message.author.id]) points[message.author.id] = {
 if (message.content.startsWith(prefix + 'فكك')) {
     if(!message.channel.guild) return message.reply('**لا تلعب عندي العب بالسيرفرات**').then(m => m.delete(3000));
 
-const type = require('./gamesRqmibot/fkk.json');
+const type = require('./gamerqmisystem/fkk.json');
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -3877,7 +3877,7 @@ if (!points[message.author.id]) points[message.author.id] = {
 if (message.content.startsWith(prefix + 'عواصم')) {
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./gamesRqmibot/3awasem.json');
+const type = require('./gamerqmisystem/3awasem.json');
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -3912,7 +3912,7 @@ if (!points[message.author.id]) points[message.author.id] = {
 if (message.content.startsWith(prefix + 'رياضيات')) {
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./gamesRqmibot/ryd.json');
+const type = require('./gamerqmisystem/ryd.json');
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -3947,7 +3947,7 @@ if (!points[message.author.id]) points[message.author.id] = {
 if (message.content.startsWith(prefix + 'لغز')) {
     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
 
-const type = require('./gamesRqmibot/quiz.json');
+const type = require('./gamerqmisystem/quiz.json');
 const item = type[Math.floor(Math.random() * type.length)];
 const filter = response => {
     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -3982,7 +3982,7 @@ msg.channel.send(`${item.type}`).then(() => {
                 if (message.content.startsWith(prefix + 'ركب')) {
                   if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
                 
-                const type = require('./gamesRqmibot/RKB.json');
+                const type = require('./gamerqmisystem/RKB.json');
                 const item = type[Math.floor(Math.random() * type.length)];
                 const filter = response => {
                     return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -4017,7 +4017,7 @@ msg.channel.send(`${item.type}`).then(() => {
             if (message.content.startsWith(prefix + 'شقلب')) {
                 if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
             
-            const type = require('./gamesRqmibot/SHAKLEB.json');
+            const type = require('./gamerqmisystem/SHAKLEB.json');
             const item = type[Math.floor(Math.random() * type.length)];
             const filter = response => {
                 return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -4051,7 +4051,7 @@ msg.channel.send(`${item.type}`).then(() => {
                   if (message.content.startsWith(prefix + 'كتابة')) {
                     if(!message.channel.guild) return message.reply('**هذا الأمر للسيرفرات فقط**').then(m => m.delete(3000));
                   
-                  const type = require('./gamesRqmibot/type.json');
+                  const type = require('./gamerqmisystem/type.json');
                   const item = type[Math.floor(Math.random() * type.length)];
                   const filter = response => {
                       return item.answers.some(answer => answer.toLowerCase() === response.content.toLowerCase());
@@ -4192,7 +4192,7 @@ client.on("message", (message) => {
   if (message.author.bot) return;
     if (message.author.id === client.user.id) return;
 	if(!message.channel.guild) return;       
-if (message.content === '!credits') {
+if (message.content === '!credit') {
 message.channel.send(`** ${message.author.username}, your :credit_card: balance is ${games[message.author.id].credits}.**`)
 }
 });
@@ -4357,6 +4357,8 @@ if (message.content.startsWith("!profile")) {
           
       }
   const w = ['./PicsArt_08-28-06.21.07.png'];
+       var Canvas = require('canvas')
+var jimp = require('jimp')
 if (!games[getvalueof.id]) games[getvalueof.id] = {wins: 0,loses: 0,points: 0,total: 0,credits: 100,level: 1,};          
             let Image = Canvas.Image,
             canvas = new Canvas(300, 300),
