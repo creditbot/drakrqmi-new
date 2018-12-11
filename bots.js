@@ -3837,9 +3837,6 @@ ${args}
   );
   
   
-  
-  let points = {}
-
 client.on('message', message => {
 if (!points[message.author.id]) points[message.author.id] = {
     points: 0,
@@ -4109,7 +4106,7 @@ client.on("message", message => {
   if (message.author.bot) return;
   if(!message.channel.guild)return;
   if (!profile[message.author.id]) profile[message.author.id] = {
-    info: '=info To Set The Info',
+    info: '!info To Set The Info',
     rep: 0,
     reps: 'NOT YET',
     lastDaily:'Not Collected',
